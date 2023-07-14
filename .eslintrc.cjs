@@ -16,5 +16,6 @@ module.exports = {
   rules: {
     'no-console': ['warn', { allow: ['warn', 'error', 'info'] }],
     'import/prefer-default-export': 'off',
+    'react/prop-types': 'off',
   },
 };
