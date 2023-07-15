@@ -6,6 +6,7 @@ export const NoticeSliderStyle = styled.div`
   width: 100%;
   height: 59px;
   margin-top: 10px;
+  cursor: pointer;
 
   .splide {
     height: 100%;
@@ -55,7 +56,7 @@ export const NoticeSliderStyle = styled.div`
 `;
 
 export const AdSliderStyle = styled.div`
-  margin: 20px 0;
+  cursor: pointer;
 
   .splide__slide {
     width: 100%;
