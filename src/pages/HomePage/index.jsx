@@ -2,7 +2,7 @@ import React from 'react';
 import InfoCard from '../../components/Card';
 import { NoticeSlider, AdSlider } from '../../components/CardSlider';
 import { HomeContainer, NoticeBox, AdBox, InfoBox, SubTitle } from './style';
-import backgroundImg from '../../assets/NoticeBg.png';
+import backgroundImg from '../../assets/images/NoticeBg.png';
 
 function Home() {
   return (
@@ -19,7 +19,10 @@ function Home() {
         <AdSlider />
       </AdBox>
       <InfoBox>
-        <div>정보게시판</div>
+        <div>
+          <SubTitle>정보게시판</SubTitle>
+        </div>
+
         <InfoCard />
       </InfoBox>
     </HomeContainer>
