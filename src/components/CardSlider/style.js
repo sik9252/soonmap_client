@@ -5,6 +5,7 @@ export const NoticeSliderStyle = styled.div`
   position: relative;
   width: 100%;
   height: 59px;
+  margin-top: 10px;
 
   .splide {
     height: 100%;
