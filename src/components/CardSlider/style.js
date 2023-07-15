@@ -52,3 +52,19 @@ export const NoticeSliderStyle = styled.div`
     background-color: rgba(255, 255, 255, 1);
   }
 `;
+
+export const AdSliderStyle = styled.div`
+  margin: 20px 0;
+
+  .splide__slide {
+    width: 100%;
+    height: 240px;
+
+    & > img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 20px;
+    }
+  }
+`;

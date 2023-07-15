@@ -4,7 +4,6 @@ import { FONT_STYLES } from '../../styles/common/font';
 
 export const HomeContainer = styled.div`
   padding: 20px 10px;
-  color: ${COLOR.MAIN_WHITE};
 `;
 
 export const NoticeBox = styled.div`
@@ -12,6 +11,7 @@ export const NoticeBox = styled.div`
   height: 150px;
   border-radius: 10px;
   padding: 20px 10px;
+  color: ${COLOR.MAIN_WHITE};
   background-image: ${({ $bgImg }) => `url('${$bgImg}')`};
   background-size: cover;
   background-position: center;
