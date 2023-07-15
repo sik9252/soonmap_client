@@ -14,7 +14,9 @@ module.exports = {
   extends: ['eslint:recommended', 'plugin:react/recommended', 'plugin:jsx-a11y/recommended'],
   plugins: [],
   rules: {
-    'no-console': ['error', { allow: ['warn', 'error', 'info'] }],
+    'no-console': ['warn', { allow: ['warn', 'error', 'info'] }],
     'import/prefer-default-export': 'off',
+    'react/prop-types': 'off',
+    'no-unused-vars': 'off',
   },
 };
