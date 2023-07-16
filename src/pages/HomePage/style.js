@@ -8,6 +8,7 @@ export const HomeContainer = styled.div`
 
 export const SubTitle = styled.div`
   ${FONT_STYLES.P_B}
+  font-size: 18px;
 `;
 
 export const NoticeBox = styled.div`
@@ -18,8 +19,19 @@ export const NoticeBox = styled.div`
   color: ${COLOR.MAIN_WHITE};
   background-image: ${({ $bgImg }) => `url('${$bgImg}')`};
   background-size: cover;
-  background-position: center;
   background-repeat: no-repeat;
+
+  & > div:nth-child(1) {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 7px;
+
+    & > svg {
+      cursor: pointer;
+      color: ${COLOR.MAIN_WHITE};
+    }
+  }
 `;
 
 export const AdBox = styled.div`
@@ -37,7 +49,7 @@ export const InfoBox = styled.div`
     justify-content: space-between;
     margin-bottom: 7px;
 
-    & > img {
+    & > svg {
       cursor: pointer;
     }
   }
