@@ -20,6 +20,7 @@ export const NoticeBox = styled.div`
   background-image: ${({ $bgImg }) => `url('${$bgImg}')`};
   background-size: cover;
   background-repeat: no-repeat;
+  background-position: center;
 
   & > div:nth-child(1) {
     display: flex;
