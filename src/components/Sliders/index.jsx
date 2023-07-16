@@ -1,12 +1,16 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { NoticeSliderStyle, AdSliderStyle } from './style';
 import { SplideSlide } from '@splidejs/react-splide';
 import Slider from '../Slider';
-import AdImg_1 from '../../assets/images/Ad1.png';
-import AdImg_2 from '../../assets/images/Ad2.jpg';
-import AdImg_3 from '../../assets/images/Ad3.jpg';
 
 export const NoticeSlider = ({ noticeData }) => {
+  const navigate = useNavigate();
+
+  const clickNotice = (noticeId) => {
+    navigate(`/notice/${noticeId}`);
+  };
+
   return (
     <NoticeSliderStyle>
       <Slider
@@ -20,7 +24,7 @@ export const NoticeSlider = ({ noticeData }) => {
       >
         {noticeData &&
           noticeData.map((notice) => (
-            <SplideSlide key={notice.id}>
+            <SplideSlide key={notice.id} onClick={() => clickNotice(notice.id)}>
               <div>
                 <div>{notice.author}</div>
                 <div>·</div>
