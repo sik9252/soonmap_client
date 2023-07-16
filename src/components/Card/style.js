@@ -12,6 +12,19 @@ export const CardContainer = styled.div`
   background-image: ${({ $thumbnail }) => `url('${$thumbnail}')`};
   background-size: cover;
   background-repeat: no-repeat;
+  background-position: center;
+
+  @media only screen and (min-width: 480px) {
+    margin: 5px 0;
+  }
+
+  @media only screen and (min-width: 600px) {
+    margin: 8px 0;
+  }
+
+  @media only screen and (min-width: 900px) {
+    margin: 10px 0;
+  }
 `;
 
 export const CardBackground = styled.div`
@@ -26,6 +39,10 @@ export const CardInfo = styled.div`
   bottom: 0;
   padding: 10px;
   color: ${COLOR.MAIN_WHITE};
+  height: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 
   & > div:nth-child(1) {
     display: -webkit-box;
