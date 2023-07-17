@@ -8,7 +8,7 @@ const GlobalStyle = createGlobalStyle`
         ${({ theme }) => theme.container.mainContainer}
     }
     body {
-        font-family: Pretendard Variable,
+        font-family: Pretendard Variable;
     }
     *{
         box-sizing: border-box;

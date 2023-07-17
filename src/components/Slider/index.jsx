@@ -1,7 +1,9 @@
 import React from 'react';
+import { Splide } from '@splidejs/react-splide';
+import '@splidejs/splide/dist/css/splide.min.css';
 
-function Slider() {
-  return <div>Slider</div>;
+function Slider({ children, options }) {
+  return <Splide options={options}>{children}</Splide>;
 }
 
 export default Slider;
