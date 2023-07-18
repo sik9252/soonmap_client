@@ -3,6 +3,7 @@ import COLOR from '../../styles/common/color';
 import { FONT_STYLES } from '../../styles/common/font';
 
 export const HomeContainer = styled.div`
+  /* padding: 20px 10px; */
   padding: 20px 10px;
 `;
 

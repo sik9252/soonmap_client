@@ -2,7 +2,10 @@ import styled from 'styled-components';
 import { FONT_STYLES } from '../../styles/common/font';
 import COLOR from '../../styles/common/color';
 
-export const NoticeContainer = styled.div``;
+export const NoticeContainer = styled.div`
+  //padding-bottom: 40px;
+  ${({ theme }) => theme.container.bottomPadding};
+`;
 
 export const SearchSection = styled.div`
   background-color: ${COLOR.GRAY_0};

@@ -23,6 +23,9 @@ const mainTheme = {
         max-width: 1024px;
       }
     `,
+    bottomPadding: css`
+      padding-bottom: 40px;
+    `,
   },
 };
 
