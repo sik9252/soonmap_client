@@ -11,7 +11,7 @@ export const SubTitle = styled.div`
   font-size: 18px;
 `;
 
-export const NoticeBox = styled.div`
+export const NoticeSection = styled.div`
   width: 100%;
   height: 150px;
   border-radius: 10px;
@@ -35,13 +35,13 @@ export const NoticeBox = styled.div`
   }
 `;
 
-export const AdBox = styled.div`
+export const AdSection = styled.div`
   width: 100%;
   height: 240px;
   margin: 20px 0;
 `;
 
-export const InfoBox = styled.div`
+export const InfoSection = styled.div`
   width: 100%;
 
   & > div:nth-child(1) {
