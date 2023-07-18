@@ -5,6 +5,7 @@ import COLOR from '../../styles/common/color';
 export const ArticleItemContainer = styled.div`
   padding: 20px 15px;
   border-bottom: 1px solid ${COLOR.GRAY_1};
+  cursor: pointer;
 `;
 
 export const ArticleTitleSection = styled.div`
