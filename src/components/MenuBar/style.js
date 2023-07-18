@@ -2,10 +2,8 @@ import styled from 'styled-components';
 import COLOR from '../../styles/common/color';
 
 export const FooterContainer = styled.footer`
-  position: fixed;
-  left: 50%;
+  position: sticky;
   bottom: 0;
-  transform: translateX(-50%);
   z-index: 9999;
   width: 100%;
   max-width: 1024px;
