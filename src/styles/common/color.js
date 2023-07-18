@@ -14,6 +14,10 @@ const COLOR = {
   // 마이페이지
   YELLOW: '#fbe300',
   GREEN: '#00d037',
+
+  //푸터
+  NavyBlue: '#24549C',
+  DarkGray: '#222',
 };
 
 export default COLOR;

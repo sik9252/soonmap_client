@@ -8,6 +8,7 @@ import NoticeDetailPage from '../pages/NoticeDetailPage';
 import InfoPage from '../pages/InfoPage';
 import InfoDetailPage from '../pages/InfoDetailPage';
 import PageNotFound from '../pages/PageNotFound';
+import { MenuBar } from '../components/MenuBar';
 
 function Router() {
   return (
@@ -22,6 +23,7 @@ function Router() {
         <Route path="/info" element={<InfoPage />} />
         <Route path="/info/:id" element={<InfoDetailPage />} />
       </Routes>
+      <MenuBar />
     </BrowserRouter>
   );
 }
