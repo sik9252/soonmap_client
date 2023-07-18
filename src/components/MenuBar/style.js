@@ -34,14 +34,14 @@ export const ListItem = styled.li`
   position: relative;
 
   &:nth-of-type(1) > a:before {
-    background-image: url('../../../src/assets/icons/icon_footer_home.png');
+    background-image: ${({ Home }) => `url(${Home})`};
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
   }
 
   &:nth-of-type(2) > a:before {
-    background-image: url('../../../src/assets/icons/icon_footer_food.png');
+    background-image: ${({ Food }) => `url(${Food})`};
     background-size: 24px;
     background-size: contain;
     background-repeat: no-repeat;
@@ -58,7 +58,7 @@ export const ListItem = styled.li`
   &:nth-of-type(3) > a:before {
     width: 48px;
     height: 48px;
-    background-image: url('../../../src/assets/icons/icon_footer_loca.png');
+    background-image: ${({ Loca }) => `url(${Loca})`};
     position: absolute;
     left: 50%;
     top: -51px;
@@ -68,14 +68,14 @@ export const ListItem = styled.li`
   }
 
   &:nth-of-type(4) > a:before {
-    background-image: url('../../../src/assets/icons/icon_footer_mypage.png');
+    background-image: ${({ MyPage }) => `url(${MyPage})`};
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
   }
 
   &:nth-of-type(5) > a:before {
-    background-image: url('../../../src/assets/icons/icon_footer_share.png');
+    background-image: ${({ Share }) => `url(${Share})`};
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
