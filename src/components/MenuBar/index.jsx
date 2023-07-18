@@ -6,19 +6,19 @@ export const MenuBar = () => {
     <FooterContainer>
       <List>
         <ListItem>
-          <Link2 href="/" />
+          <Link2 href="/">홈</Link2>
         </ListItem>
         <ListItem>
-          <Link2 href="/" />
+          <Link2 href="/">점메추</Link2>
         </ListItem>
         <ListItem>
-          <Link2 href="/" />
+          <Link2 href="/">지도검색</Link2>
         </ListItem>
         <ListItem>
-          <Link2 href="/" />
+          <Link2 href="/">마이홈</Link2>
         </ListItem>
         <ListItem>
-          <Link2 href="/" />
+          <Link2 href="/">공유</Link2>
         </ListItem>
       </List>
     </FooterContainer>
