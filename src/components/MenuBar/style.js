@@ -34,14 +34,14 @@ export const ListItem = styled.li`
   position: relative;
 
   &:nth-of-type(1) > a:before {
-    background-image: ${({ Home }) => `url(${Home})`};
+    background-image: ${({ $home }) => `url('${$home}')`};
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
   }
 
   &:nth-of-type(2) > a:before {
-    background-image: ${({ Food }) => `url(${Food})`};
+    background-image: ${({ $food }) => `url('${$food}')`};
     background-size: 24px;
     background-size: contain;
     background-repeat: no-repeat;
@@ -58,7 +58,7 @@ export const ListItem = styled.li`
   &:nth-of-type(3) > a:before {
     width: 48px;
     height: 48px;
-    background-image: ${({ Loca }) => `url(${Loca})`};
+    background-image: ${({ $map }) => `url('${$map}')`};
     position: absolute;
     left: 50%;
     top: -51px;
@@ -68,14 +68,14 @@ export const ListItem = styled.li`
   }
 
   &:nth-of-type(4) > a:before {
-    background-image: ${({ MyPage }) => `url(${MyPage})`};
+    background-image: ${({ $myPage }) => `url('${$myPage}')`};
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
   }
 
   &:nth-of-type(5) > a:before {
-    background-image: ${({ Share }) => `url(${Share})`};
+    background-image: ${({ $share }) => `url('${$share}')`};
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
