@@ -5,7 +5,6 @@ export const CardContainer = styled.div`
   position: relative;
   width: 49%;
   height: 216px;
-  background-color: ${COLOR.GRAY_0};
   border-radius: 10px;
   margin: 3px 0;
   cursor: pointer;
