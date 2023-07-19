@@ -5,7 +5,7 @@ import { ArticleItemContainer, ArticleTitleSection, ArticleInfoSection } from '.
 function ArticleItem({ isTop, title, createdAt, views, onClick }) {
   return (
     <ArticleItemContainer onClick={onClick}>
-      <ArticleTitleSection isTop={isTop}>
+      <ArticleTitleSection $isTop={isTop}>
         {isTop ? <TopNotice /> : null}
         <span>{title}</span>
       </ArticleTitleSection>
