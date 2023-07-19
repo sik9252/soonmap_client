@@ -10,10 +10,12 @@ import InfoPage from '../pages/InfoPage';
 import InfoDetailPage from '../pages/InfoDetailPage';
 import PageNotFound from '../pages/PageNotFound';
 import { MenuBar } from '../components/MenuBar';
+import { ScrollToTop } from '../hooks/scrollToTop';
 
 function Router() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <Routes>
         <Route path="*" element={<PageNotFound />} />
         <Route path="/" element={<HomePage />} />

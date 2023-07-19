@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import COLOR from '../../styles/common/color';
 
 export const FooterContainer = styled.footer`
-  position: sticky;
+  position: fixed;
   bottom: 0;
   z-index: 9999;
   width: 100%;

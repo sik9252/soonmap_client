@@ -5,6 +5,7 @@ const mainTheme = {
     mainContainer: css`
       // ~ 320px 인 device에 대한 속성 값을 작성
       margin: 0 auto;
+      padding-bottom: 54px;
 
       @media only screen and (min-width: 320px) {
         // 320px ~ 인 device에 대한 속성 값을 작성
@@ -22,10 +23,6 @@ const mainTheme = {
         // 1200px ~ 인 device에 대한 속성 값을 작성
         max-width: 1024px;
       }
-    `,
-    bottomPadding: css`
-      height: 100vh;
-      padding-bottom: 40px;
     `,
   },
 };
