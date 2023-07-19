@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Header from '../../components/Header';
 import SearchBar from '../../components/SearchBar';
 import ArticleItem from '../../components/ArticleItem';
+import Pagination from '../../components/Pagination';
 import { NoticeContainer, SearchSection, ArticleList } from './style';
 
 function NoticePage() {
@@ -54,6 +55,10 @@ function NoticePage() {
     navigate(`/notice/${noticeId}`);
   };
 
+  // 테스트용 총 페이지 수
+  const totalPosts = 21;
+  const postPerPages = 5;
+
   return (
     <NoticeContainer>
       <Header pageTitle={'공지사항'} />
@@ -73,6 +78,7 @@ function NoticePage() {
             />
           ))}
       </ArticleList>
+      <Pagination totalPosts={totalPosts} postPerPages={postPerPages} />
     </NoticeContainer>
   );
 }
