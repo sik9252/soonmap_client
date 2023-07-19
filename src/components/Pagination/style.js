@@ -4,8 +4,19 @@ import { FONT_STYLES } from '../../styles/common/font';
 
 export const PaginationContainer = styled.div`
   display: flex;
+  justify-content: center;
   align-items: center;
-  margin: 0 13px;
+  padding: 20px 0px 40px 0px;
+
+  & > svg {
+    cursor: pointer;
+  }
+  & > svg:nth-child(1) {
+    margin-right: 7px;
+  }
+  & > svg:nth-last-child(1) {
+    margin-left: 7px;
+  }
 `;
 
 export const PageNum = styled.div`
@@ -28,4 +39,9 @@ export const PageNum = styled.div`
           color: ${COLOR.MAIN_BLUE};
         `
       : null}
+`;
+
+export const HiddenBtn = styled.div`
+  width: 30px;
+  height: 30px;
 `;
