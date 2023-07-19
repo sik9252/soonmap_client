@@ -1,7 +1,8 @@
 import React from 'react';
+import { NoticeDetailContainer } from './style';
 
 function NoticeDetailPage() {
-  return <div>NoticeDetailPage</div>;
+  return <NoticeDetailContainer>NoticeDetailPage</NoticeDetailContainer>;
 }
 
 export default NoticeDetailPage;
