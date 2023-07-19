@@ -24,6 +24,7 @@ const mainTheme = {
       }
     `,
     bottomPadding: css`
+      height: 100vh;
       padding-bottom: 40px;
     `,
   },

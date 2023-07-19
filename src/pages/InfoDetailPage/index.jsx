@@ -1,7 +1,8 @@
 import React from 'react';
+import { InfoDetailContainer } from './style';
 
 function InfoDetailPage() {
-  return <div>InfoDetailPage</div>;
+  return <InfoDetailContainer>InfoDetailPage</InfoDetailContainer>;
 }
 
 export default InfoDetailPage;
