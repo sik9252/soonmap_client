@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Header from '../../components/Header';
 import SearchBar from '../../components/SearchBar';
 import ArticleItem from '../../components/ArticleItem';
+import Pagination from '../../components/Pagination';
 import { InfoContainer, SearchSection, ArticleList } from './style';
 
 function InfoPage() {
+  const navigate = useNavigate();
   const [InfoData, setInfoData] = useState([
     {
       id: 1,
@@ -46,6 +49,14 @@ function InfoPage() {
     },
   ]);
 
+  const clickInfo = (infoId) => {
+    navigate(`/info/${infoId}`);
+  };
+
+  // 테스트용 총 페이지 수
+  const totalPosts = 36;
+  const postPerPages = 5;
+
   return (
     <InfoContainer>
       <Header pageTitle={'정보게시판'} />
@@ -54,16 +65,17 @@ function InfoPage() {
       </SearchSection>
       <ArticleList>
         {InfoData &&
-          InfoData.map((Info) => (
+          InfoData.map((info) => (
             <ArticleItem
-              key={Info.id}
-              isTop={Info.isTop}
-              title={Info.title}
-              createdAt={Info.createdAt}
-              views={Info.views}
+              key={info.id}
+              title={info.title}
+              createdAt={info.createdAt}
+              views={info.views}
+              onClick={() => clickInfo(info.id)}
             />
           ))}
       </ArticleList>
+      <Pagination totalPosts={totalPosts} postPerPages={postPerPages} />
     </InfoContainer>
   );
 }
