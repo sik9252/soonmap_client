@@ -4,6 +4,9 @@ const COLOR = {
   MAIN_WHITE: '#ffffff',
   MAIN_BLACK: '#262626',
   MAIN_BLUE: '#24549C',
+  MAIN_BLUE_HOVER: '#1a478a',
+  CANCEL_BTN: '#bdbdbd',
+  CANCEL_BTN_HOVER: '#a8a8a8',
 
   // 공지사항 페이지
   MAIN_NOTICE_COLOR: '#f4f7fd',
