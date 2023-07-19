@@ -14,8 +14,8 @@ export const ArticleTitleSection = styled.div`
   align-items: center;
   font-size: 14px;
 
-  ${({ isTop }) =>
-    isTop
+  ${({ $isTop }) =>
+    $isTop
       ? css`
           & > span {
             color: ${COLOR.TOP_NOTICE_COLOR};
