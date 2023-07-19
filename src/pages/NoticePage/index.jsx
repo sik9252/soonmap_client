@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Header from '../../components/Header';
+import SearchBar from '../../components/SearchBar';
 import ArticleItem from '../../components/ArticleItem';
 import { NoticeContainer, SearchSection, ArticleList } from './style';
 
@@ -56,7 +57,9 @@ function NoticePage() {
   return (
     <NoticeContainer>
       <Header pageTitle={'공지사항'} />
-      <SearchSection>검색바가 들어갈 구역</SearchSection>
+      <SearchSection>
+        <SearchBar placeholder={'검색어를 입력해주세요.'} />
+      </SearchSection>
       <ArticleList>
         {noticeData &&
           noticeData.map((notice) => (
