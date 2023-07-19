@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Header from '../../components/Header';
+import SearchBar from '../../components/SearchBar';
 import ArticleItem from '../../components/ArticleItem';
 import { InfoContainer, SearchSection, ArticleList } from './style';
 
@@ -48,7 +49,9 @@ function InfoPage() {
   return (
     <InfoContainer>
       <Header pageTitle={'정보게시판'} />
-      <SearchSection>검색바가 들어갈 구역</SearchSection>
+      <SearchSection>
+        <SearchBar placeholder={'검색어를 입력해주세요.'} />
+      </SearchSection>
       <ArticleList>
         {InfoData &&
           InfoData.map((Info) => (
