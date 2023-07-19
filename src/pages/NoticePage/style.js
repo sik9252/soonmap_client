@@ -1,9 +1,7 @@
 import styled from 'styled-components';
 import COLOR from '../../styles/common/color';
 
-export const NoticeContainer = styled.div`
-  ${({ theme }) => theme.container.bottomPadding};
-`;
+export const NoticeContainer = styled.div``;
 
 export const SearchSection = styled.div`
   background-color: ${COLOR.GRAY_0};
