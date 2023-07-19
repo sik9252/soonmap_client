@@ -2,9 +2,9 @@ import React from 'react';
 import { ReactComponent as TopNotice } from '../../assets/icons/TopNotice.svg';
 import { ArticleItemContainer, ArticleTitleSection, ArticleInfoSection } from './style';
 
-function ArticleItem({ isTop, title, createdAt, views }) {
+function ArticleItem({ isTop, title, createdAt, views, onClick }) {
   return (
-    <ArticleItemContainer>
+    <ArticleItemContainer onClick={onClick}>
       <ArticleTitleSection isTop={isTop}>
         {isTop ? <TopNotice /> : null}
         <span>{title}</span>

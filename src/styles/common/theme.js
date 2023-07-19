@@ -23,6 +23,10 @@ const mainTheme = {
         max-width: 1024px;
       }
     `,
+    bottomPadding: css`
+      height: 100vh;
+      padding-bottom: 40px;
+    `,
   },
 };
 

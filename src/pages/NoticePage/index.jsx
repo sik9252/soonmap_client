@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Header from '../../components/Header';
 import ArticleItem from '../../components/ArticleItem';
 import { NoticeContainer, SearchSection, ArticleList } from './style';
 
 function NoticePage() {
+  const navigate = useNavigate();
   const [noticeData, setNoticeData] = useState([
     {
       id: 1,
@@ -47,6 +49,10 @@ function NoticePage() {
     },
   ]);
 
+  const clickNotice = (noticeId) => {
+    navigate(`/notice/${noticeId}`);
+  };
+
   return (
     <NoticeContainer>
       <Header pageTitle={'공지사항'} />
@@ -60,6 +66,7 @@ function NoticePage() {
               title={notice.title}
               createdAt={notice.createdAt}
               views={notice.views}
+              onClick={() => clickNotice(notice.id)}
             />
           ))}
       </ArticleList>
