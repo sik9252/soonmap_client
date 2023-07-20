@@ -28,5 +28,5 @@ dist-ssr
 .env.production
 .env.test.local
 
-.gitmessage.txt
+.gitcommit.txt
 .eslintcache
