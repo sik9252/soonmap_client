@@ -47,7 +47,7 @@ export const ListItem = styled.li`
   }
 
   &:nth-of-type(3) > a {
-    color: ${COLOR.NavyBlue} !important;
+    color: ${COLOR.MAIN_BLUE} !important;
     font-weight: 600;
     font-size: 14px;
     align-items: center;
