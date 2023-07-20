@@ -8,7 +8,7 @@ import NoticePage from '../pages/NoticePage';
 import NoticeDetailPage from '../pages/NoticeDetailPage';
 import InfoPage from '../pages/InfoPage';
 import InfoDetailPage from '../pages/InfoDetailPage';
-import PageNotFound from '../pages/PageNotFound';
+import NotFoundPage from '../pages/NotFoundPage';
 import { MenuBar } from '../components/MenuBar';
 import { ScrollToTop } from '../hooks/scrollToTop';
 
@@ -17,7 +17,7 @@ function Router() {
     <BrowserRouter>
       <ScrollToTop />
       <Routes>
-        <Route path="*" element={<PageNotFound />} />
+        <Route path="*" element={<NotFoundPage />} />
         <Route path="/" element={<HomePage />} />
         <Route path="/map" element={<MapPage />} />
         <Route path="/map/:id" element={<MapDetailPage />} />
