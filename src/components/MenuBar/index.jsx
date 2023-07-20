@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { FooterContainer, List, ListItem, Link2 } from './style';
-import Home from '../../assets/icons/icon_footer_home.png';
-import Food from '../../assets/icons/icon_footer_food.png';
-import Map from '../../assets/icons/icon_footer_loca.png';
-import MyPage from '../../assets/icons/icon_footer_mypage.png';
-import Share from '../../assets/icons/icon_footer_share.png';
+import Home from '../../assets/icons/IconFooterHome.svg';
+import Food from '../../assets/icons/IconFooterFood.svg';
+import Map from '../../assets/icons/icon_footer_map.png';
+import MyPage from '../../assets/icons/IconFooterMy.svg';
+import Share from '../../assets/icons/IconFooterShare.svg';
 import AlertModal from '../../components/AlertModal';
 
 export const MenuBar = () => {

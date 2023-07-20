@@ -36,6 +36,7 @@ export const ListItem = styled.li`
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
+    width: 23px;
   }
 
   &:nth-of-type(2) > a:before {
@@ -44,6 +45,7 @@ export const ListItem = styled.li`
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
+    width: 20px;
   }
 
   &:nth-of-type(3) > a {
@@ -70,6 +72,9 @@ export const ListItem = styled.li`
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
+    width: 20px;
+    height: 20px;
+    margin-bottom: 3px;
   }
 
   &:nth-of-type(5) > a:before {
@@ -77,6 +82,9 @@ export const ListItem = styled.li`
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
+    width: 20px;
+    height: 20px;
+    margin-bottom: 3px;
   }
 `;
 
