@@ -20,7 +20,6 @@ const COLOR = {
   GREEN: '#00d037',
 
   //푸터
-  NavyBlue: '#24549C',
   DarkGray: '#222',
 };
 
