@@ -26,15 +26,19 @@ export const MapHead = styled.div`
     padding: 0 18px;
     margin-left: 8px;
     height: 40px;
-    background: ${COLOR.MAIN_WHITE};
-    box-shadow: 2px 2px 4px 0px rgba(0, 0, 0, 0.25);
     border-radius: 65px;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
   }
 
-  & > form > input {
+  & > form > div {
+    display: flex;
+    flex: 1;
+    width: 100%;
+  }
+
+  & > form > div > input {
     flex: 1;
     min-width: 0;
     font-size: 14px;
@@ -44,49 +48,46 @@ export const MapHead = styled.div`
     border: none;
     outline: none;
   }
+
+  & > button {
+    width: 40px;
+    height: 40px;
+    font-size: 0;
+    border-radius: 50%;
+    box-shadow: 2px 2px 4px 0px rgba(0, 0, 0, 0.25);
+    cursor: pointer;
+  }
 `;
 
 export const MapHeadAnchor = styled.a`
+  display: inline-block;
+  content: '';
   width: 40px;
   height: 40px;
-  font-size: 0;
-  border-radius: 50%;
   background: rgba(255, 255, 255, 0.8);
   background-image: ${({ $mapMyBtn }) => `url('${$mapMyBtn}')`};
   background-repeat: no-repeat;
   background-position: center;
-  background-size: 30px;
-  box-shadow: 2px 2px 4px 0px rgba(0, 0, 0, 0.25);
-  cursor: pointer;
-`;
-
-export const SearchAnchor = styled.a`
-  width: 25px;
-  height: 25px;
-  font-size: 0;
-  background-image: ${({ $searchBtn }) => `url('${$searchBtn}')`};
-  background-repeat: no-repeat;
-  background-position: center;
   background-size: cover;
-  cursor: pointer;
+  background-color: transparent;
 `;
 
 export const MapBody = styled.div`
-  height: 100%;
-  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const MapSection = styled.div`
-  left: 2%;
-  top: 0;
-  width: 1000px;
-  height: 600px;
-  margin: -20px 0 0;
+  max-width: 1000px;
+  width: 100%;
+  height: 105vh;
   object-fit: cover;
 `;
 
 export const MapFoot = styled.div`
   position: fixed;
+  display: none;
   left: 50%;
   bottom: 100px;
   transform: translateX(-50%);
@@ -139,6 +140,32 @@ export const MapFoot = styled.div`
     font-size: 18px;
     font-weight: 700;
     cursor: pointer;
+  }
+
+  @media screen and (max-width: 900px) {
+    & > img {
+      right: 4%;
+      bottom: 40px;
+      width: 180px;
+      height: 90px;
+  }
+
+   @media screen and (max-width: 600px) {
+    & > img {
+      right: 4%;
+      bottom: 55px;
+      width: 145px;
+      height: 75px;
+    }
+  }
+
+   @media screen and (max-width: 480px) {
+    & > img {
+      right: 5%;
+      bottom: 70px;
+      width: 120px;
+      height: 60px;
+    }
   }
 `;
 
