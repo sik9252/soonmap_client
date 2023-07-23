@@ -13,6 +13,11 @@ jobs:
       - uses: actions/checkout@v3
         with:
           ref: 'deploy'
+      - name: Generate Environment Variables File for Production
+        run: |
+          echo "VITE_KAKAO_API_KEY=$VITE_KAKAO_API_KEY" >> .env.production
+        env:
+          VITE_KAKAO_API_KEY: ${{ secrets.VITE_KAKAO_API_KEY }}
       - run: yarn install
       - run: yarn build
       - name: deploy to s3
