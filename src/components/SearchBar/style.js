@@ -5,6 +5,7 @@ export const InputBox = styled.div`
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  width: 100%;
 `;
 
 export const Input = styled.input`
