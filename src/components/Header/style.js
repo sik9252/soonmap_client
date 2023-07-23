@@ -11,6 +11,9 @@ export const HeaderContainer = styled.div`
   align-items: center;
   padding: 0 10px;
   border-bottom: 1px solid ${COLOR.GRAY_0};
+  position: relative;
+  z-index: 10;
+  background-color: ${COLOR.MAIN_WHITE};
 
   & > svg {
     cursor: pointer;
