@@ -1,6 +1,5 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Button } from '../Button';
 import { BuildingInfoContainer, BuildingInfoSection, BuildingImageSection, BuildingMainInfoSection } from './style';
 import { ReactComponent as DetailArrowBtn } from '../../assets/icons/DetailArrowBtn.svg';
 
@@ -11,21 +10,27 @@ function BuildingInfoPopup({ buildingInfo, buildingInfoPopup }) {
     navigate(`/map/${buildingId}`);
   };
 
+  const clickImage = (e) => {
+    e.stopPropagation();
+  };
+
   return (
-    <BuildingInfoContainer $buildingInfoPopup={buildingInfoPopup}>
+    <BuildingInfoContainer
+      $buildingInfoPopup={buildingInfoPopup}
+      onClick={() => clickGoToBuildingInfoDetail(buildingInfo.id)}
+    >
       <BuildingInfoSection>
-        <BuildingImageSection>
+        <BuildingImageSection onClick={(e) => clickImage(e)}>
           <img src={buildingInfo.image} alt="" />
         </BuildingImageSection>
         <BuildingMainInfoSection>
-          <div>{buildingInfo.name}</div>
+          <div>
+            <div>{buildingInfo.name}</div>
+            <DetailArrowBtn onClick={() => clickGoToBuildingInfoDetail(buildingInfo.id)} />
+          </div>
           <div>{buildingInfo.detail}</div>
         </BuildingMainInfoSection>
       </BuildingInfoSection>
-      <Button width={130} height={38} onClick={() => clickGoToBuildingInfoDetail(buildingInfo.id)}>
-        <div>상세보기</div>
-        <DetailArrowBtn />
-      </Button>
     </BuildingInfoContainer>
   );
 }
