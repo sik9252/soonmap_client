@@ -3,17 +3,24 @@ const COLOR = {
   BG_COLOR: '#f2f2f2',
   MAIN_WHITE: '#ffffff',
   MAIN_BLACK: '#262626',
-  MAIN_BLUE: '#3360a2',
+  MAIN_BLUE: '#24549C',
+  MAIN_BLUE_HOVER: '#1a478a',
+  CANCEL_BTN: '#bdbdbd',
+  CANCEL_BTN_HOVER: '#a8a8a8',
 
   // 공지사항 페이지
   MAIN_NOTICE_COLOR: '#f4f7fd',
-  NEW_NOTICE_COLOR: ' #FF3C3C',
-  GRAY_0: '#c0c0c0',
-  GRAY_1: '#989898',
+  TOP_NOTICE_COLOR: ' #FF3C3C',
+  GRAY_0: '#eeeeee',
+  GRAY_1: '#d9d9d9',
+  GRAY_2: '#777777',
 
   // 마이페이지
   YELLOW: '#fbe300',
   GREEN: '#00d037',
+
+  //푸터
+  DarkGray: '#222',
 };
 
 export default COLOR;

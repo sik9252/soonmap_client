@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { InfoCard } from '../../components/Card';
 import { NoticeSlider, AdSlider } from '../../components/Sliders';
-import { HomeContainer, SubTitle, NoticeBox, AdBox, InfoBox, InfoList } from './style';
+import { HomeContainer, SubTitle, NoticeSection, AdSection, InfoSection, InfoList } from './style';
 import backgroundImage from '../../assets/images/NoticeBg.png';
 import { ReactComponent as MoreBtn } from '../../assets/icons/MoreBtn.svg';
 import AdImg_1 from '../../assets/images/Ad1.png';
@@ -95,17 +95,17 @@ function Home() {
 
   return (
     <HomeContainer>
-      <NoticeBox $bgImg={backgroundImage}>
+      <NoticeSection $bgImg={backgroundImage}>
         <div>
           <SubTitle>공지사항</SubTitle>
           <MoreBtn onClick={() => clickShowMoreNotice()} />
         </div>
         <NoticeSlider noticeData={noticeData} />
-      </NoticeBox>
-      <AdBox>
+      </NoticeSection>
+      <AdSection>
         <AdSlider adData={adData} />
-      </AdBox>
-      <InfoBox>
+      </AdSection>
+      <InfoSection>
         <div>
           <SubTitle>정보게시판</SubTitle>
           <MoreBtn onClick={() => clickShowMoreInfo()} />
@@ -122,7 +122,7 @@ function Home() {
               />
             ))}
         </InfoList>
-      </InfoBox>
+      </InfoSection>
     </HomeContainer>
   );
 }

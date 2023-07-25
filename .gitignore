@@ -23,5 +23,10 @@ dist-ssr
 *.sln
 *.sw?
 
-.gitmessage.txt
+.env
+.env.development
+.env.production
+.env.test.local
+
+.gitcommit.txt
 .eslintcache

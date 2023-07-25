@@ -3,7 +3,8 @@ import COLOR from '../../styles/common/color';
 import { FONT_STYLES } from '../../styles/common/font';
 
 export const HomeContainer = styled.div`
-  padding: 20px 10px;
+  /* padding: 20px 10px; */
+  padding: 20px 10px 35px 10px;
 `;
 
 export const SubTitle = styled.div`
@@ -11,7 +12,7 @@ export const SubTitle = styled.div`
   font-size: 18px;
 `;
 
-export const NoticeBox = styled.div`
+export const NoticeSection = styled.div`
   width: 100%;
   height: 150px;
   border-radius: 10px;
@@ -35,13 +36,13 @@ export const NoticeBox = styled.div`
   }
 `;
 
-export const AdBox = styled.div`
+export const AdSection = styled.div`
   width: 100%;
   height: 240px;
   margin: 20px 0;
 `;
 
-export const InfoBox = styled.div`
+export const InfoSection = styled.div`
   width: 100%;
 
   & > div:nth-child(1) {
