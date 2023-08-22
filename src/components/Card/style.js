@@ -46,11 +46,12 @@ export const CardInfo = styled.div`
   & > div:nth-child(1) {
     display: -webkit-box;
     -webkit-box-orient: vertical;
-    -webkit-line-clamp: 3;
+    -webkit-line-clamp: 2;
     overflow: hidden;
     white-space: normal;
     line-height: 1.2;
-    margin-bottom: 8px;
+    position: relative;
+    bottom: 10px;
   }
 
   & > div:nth-child(2) {
