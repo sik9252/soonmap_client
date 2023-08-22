@@ -1,13 +1,32 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { Link } from 'react-router-dom';
-import { RegisterContainer, Notice, InputSection, OtherOptionSection, InputBox, Domain } from './style';
+import { RegisterContainer, Notice, InputSection, OtherOptionSection, InputBox, Domain, TimerSection } from './style';
 import Header from '../../components/Header';
 import { SquareInput } from '../../components/Input';
 import { Button } from '../../components/Button';
+import Timer from '../../utils/timer';
+import toast from 'react-hot-toast';
 
 function RegisterPage() {
   const [isEmailValidate, setIsEmailValidate] = useState(false);
   const [isCertificated, setIsCertificated] = useState(false);
+
+  const [isTimeUp, setTimeUp] = useState(false);
+
+  const timerComponent = useMemo(() => {
+    return <Timer isStart={isEmailValidate} setTimeUp={setTimeUp} />;
+  }, [isEmailValidate]);
+
+  useEffect(() => {
+    if (isTimeUp) {
+      toast.error('인증번호가 만료되었습니다. 다시 받아주세요.');
+      setIsEmailValidate(false);
+    }
+
+    setTimeout(() => {
+      setTimeUp(false);
+    }, 500);
+  }, [isTimeUp]);
 
   return (
     <RegisterContainer>
@@ -25,10 +44,11 @@ function RegisterPage() {
         </InputBox>
         {isEmailValidate ? (
           <InputBox>
-            <SquareInput placeholder="인증번호를 입력해주세요." />
-            <Button height={48} bgColor={'#4B7CC4'}>
-              인증하기
-            </Button>
+            <div>
+              <SquareInput placeholder="인증번호를 입력해주세요." />
+              <TimerSection>{timerComponent}</TimerSection>
+            </div>
+            <Button height={48}>인증하기</Button>
           </InputBox>
         ) : (
           ''

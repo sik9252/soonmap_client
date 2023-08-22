@@ -40,3 +40,7 @@ export const InputBox = styled.div`
 export const Domain = styled.div`
   margin-left: 10px;
 `;
+
+export const TimerSection = styled.div`
+  margin-left: 10px;
+`;
