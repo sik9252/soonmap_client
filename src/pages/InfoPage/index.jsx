@@ -4,7 +4,7 @@ import Header from '../../components/Header';
 import SearchBar from '../../components/SearchBar';
 import ArticleItem from '../../components/ArticleItem';
 import Pagination from '../../components/Pagination';
-import { InfoContainer, SearchSection, ArticleList } from './style';
+import { InfoContainer, SearchSection, ArticleList, ArticleNotFound } from './style';
 import { useGetInfoRequest } from '../../api/Info';
 import toast from 'react-hot-toast';
 
@@ -57,17 +57,22 @@ function InfoPage() {
         <SearchBar placeholder={'검색어를 입력해주세요.'} onChange={handleKeyword} onKeyDown={handleOnEnterKeyDown} />
       </SearchSection>
       <ArticleList>
-        {InfoData &&
-          InfoData.map((info) => (
-            <ArticleItem
-              key={info.id}
-              writer={info.writer}
-              title={info.title}
-              createAt={info.createAt}
-              view={info.view}
-              onClick={() => clickInfo(info.id)}
-            />
-          ))}
+        {InfoData && InfoData.length > 0 ? (
+          <>
+            {InfoData.map((info) => (
+              <ArticleItem
+                key={info.id}
+                writer={info.writer}
+                title={info.title}
+                createAt={info.createAt}
+                view={info.view}
+                onClick={() => clickInfo(info.id)}
+              />
+            ))}
+          </>
+        ) : (
+          <ArticleNotFound>게시글이 없습니다.</ArticleNotFound>
+        )}
       </ArticleList>
       <Pagination
         totalPosts={totalPosts * 5}

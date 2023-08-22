@@ -4,7 +4,7 @@ import Header from '../../components/Header';
 import SearchBar from '../../components/SearchBar';
 import ArticleItem from '../../components/ArticleItem';
 import Pagination from '../../components/Pagination';
-import { NoticeContainer, SearchSection, ArticleList } from './style';
+import { NoticeContainer, SearchSection, ArticleList, ArticleNotFound } from './style';
 import { useGetNoticeRequest, useGetTopNoticeRequest } from '../../api/Notice';
 import toast from 'react-hot-toast';
 
@@ -79,18 +79,23 @@ function NoticePage() {
               onClick={() => clickNotice(notice.id)}
             />
           ))}
-        {noticeData &&
-          noticeData.map((notice) => (
-            <ArticleItem
-              key={notice.id}
-              isTop={notice.top}
-              writer={notice.writer}
-              title={notice.title}
-              createAt={notice.createAt}
-              view={notice.view}
-              onClick={() => clickNotice(notice.id)}
-            />
-          ))}
+        {noticeData && noticeData.length > 0 ? (
+          <>
+            {noticeData.map((notice) => (
+              <ArticleItem
+                key={notice.id}
+                isTop={notice.top}
+                writer={notice.writer}
+                title={notice.title}
+                createAt={notice.createAt}
+                view={notice.view}
+                onClick={() => clickNotice(notice.id)}
+              />
+            ))}
+          </>
+        ) : (
+          <ArticleNotFound>게시글이 없습니다.</ArticleNotFound>
+        )}
       </ArticleList>
       <Pagination
         totalPosts={totalPosts * 5}
