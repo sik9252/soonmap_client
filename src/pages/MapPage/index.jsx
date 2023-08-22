@@ -121,11 +121,15 @@ function Map() {
     }
   };
 
+  const openAlertModal = (e) => {
+    alert('현재 기능 개발중입니다!');
+  };
+
   return (
     <MapContainer>
       <Header pageTitle={'지도 검색'} />
       <SearchSection>
-        <MapMyBtn />
+        <MapMyBtn onClick={() => openAlertModal()} />
         <SearchBar
           placeholder={'건물/강의실 이름을 입력해주세요.'}
           onChange={(e) => setKeyword(e.target.value)}
