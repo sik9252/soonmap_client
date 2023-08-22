@@ -15,15 +15,12 @@ export function useGetBuildingRequest(params, isEnabled) {
 }
 
 // 건물 상세요청
-export function useGetBuildingDetailRequest(params, isEnabled) {
-  return useQuery(
-    [`/building/${params.id}/count`, params],
-    () =>
-      httpClient({
-        method: 'GET',
-        url: `/building/${params.id}/count`,
-      }),
-    { enabled: isEnabled },
+export function useGetBuildingDetailRequest(params) {
+  return useQuery([`/building/${params.id}/count`, params], () =>
+    httpClient({
+      method: 'GET',
+      url: `/building/${params.id}/count`,
+    }),
   );
 }
 

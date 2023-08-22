@@ -5,80 +5,99 @@ import SearchBar from '../../components/SearchBar';
 import ArticleItem from '../../components/ArticleItem';
 import Pagination from '../../components/Pagination';
 import { NoticeContainer, SearchSection, ArticleList } from './style';
+import { useGetNoticeRequest, useGetTopNoticeRequest } from '../../api/Notice';
+import toast from 'react-hot-toast';
 
 function NoticePage() {
   const navigate = useNavigate();
-  const [noticeData, setNoticeData] = useState([
-    {
-      id: 1,
-      title: '공지사항1',
-      content: '공지사항1 내용',
-      isTop: true,
-      createdAt: '2023.07.12',
-      views: 22,
-    },
-    {
-      id: 2,
-      title: '공지사항2',
-      content: '공지사항2 내용',
-      isTop: true,
-      createdAt: '2023.07.12',
-      views: 22,
-    },
-    {
-      id: 3,
-      title: '공지사항3',
-      content: '공지사항3 내용',
-      isTop: false,
-      createdAt: '2023.07.12',
-      views: 22,
-    },
-    {
-      id: 4,
-      title: '공지사항4',
-      content: '공지사항4 내용',
-      isTop: false,
-      createdAt: '2023.07.12',
-      views: 22,
-    },
-    {
-      id: 5,
-      title: '공지사항5',
-      content: '공지사항5 내용',
-      isTop: false,
-      createdAt: '2023.07.12',
-      views: 22,
-    },
-  ]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPosts, setTotalPosts] = useState(1);
+  const [keyword, setKeyword] = useState('');
+
+  const { data: topNoticeResult, isError: topNoticeError } = useGetTopNoticeRequest();
+
+  const {
+    data: noticeResult,
+    isError: noticeError,
+    refetch: noticeRefetch,
+  } = useGetNoticeRequest({ page: currentPage - 1, title: keyword }, false);
+
+  const [noticeData, setNoticeData] = useState([]);
+  const [topNoticeData, setTopNoticeData] = useState([]);
+
+  useEffect(() => {
+    noticeRefetch();
+  }, [currentPage]);
+
+  useEffect(() => {
+    if (noticeResult) {
+      setNoticeData(noticeResult.data.noticeList);
+      setTotalPosts(noticeResult.data.totalPage);
+    } else if (noticeError) {
+      toast.error('공지사항을 불러오는데 실패했습니다.');
+    }
+  }, [noticeResult, noticeError]);
+
+  useEffect(() => {
+    if (topNoticeResult) {
+      setTopNoticeData(topNoticeResult.data);
+    } else if (topNoticeError) {
+      toast.error('공지사항을 불러오는데 실패했습니다.');
+    }
+  }, [topNoticeResult, topNoticeError]);
 
   const clickNotice = (noticeId) => {
     navigate(`/notice/${noticeId}`);
   };
 
-  // 테스트용 총 페이지 수
-  const totalPosts = 21;
-  const postPerPages = 5;
+  const handleKeyword = (e) => {
+    setKeyword(e.target.value);
+  };
+
+  const handleOnEnterKeyDown = (e) => {
+    if (e.key === 'Enter') {
+      noticeRefetch();
+    }
+  };
 
   return (
     <NoticeContainer>
       <Header pageTitle={'공지사항'} />
       <SearchSection>
-        <SearchBar placeholder={'검색어를 입력해주세요.'} />
+        <SearchBar placeholder={'검색어를 입력해주세요.'} onChange={handleKeyword} onKeyDown={handleOnEnterKeyDown} />
       </SearchSection>
       <ArticleList>
+        {topNoticeData &&
+          topNoticeData.map((notice) => (
+            <ArticleItem
+              key={notice.id}
+              isTop={notice.top}
+              writer={notice.writer}
+              title={notice.title}
+              createAt={notice.createAt}
+              view={notice.view}
+              onClick={() => clickNotice(notice.id)}
+            />
+          ))}
         {noticeData &&
           noticeData.map((notice) => (
             <ArticleItem
               key={notice.id}
-              isTop={notice.isTop}
+              isTop={notice.top}
+              writer={notice.writer}
               title={notice.title}
-              createdAt={notice.createdAt}
-              views={notice.views}
+              createAt={notice.createAt}
+              view={notice.view}
               onClick={() => clickNotice(notice.id)}
             />
           ))}
       </ArticleList>
-      <Pagination totalPosts={totalPosts} postPerPages={postPerPages} />
+      <Pagination
+        totalPosts={totalPosts * 5}
+        postPerPages={5}
+        currentPage={currentPage}
+        setCurrentPage={setCurrentPage}
+      />
     </NoticeContainer>
   );
 }

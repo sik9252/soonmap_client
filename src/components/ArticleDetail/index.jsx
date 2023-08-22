@@ -1,17 +1,33 @@
 import React from 'react';
-import { ArticleDetailContainer, ArticleTitleSection, ArticleInfoSection, ArticleContentSection } from './style';
+import {
+  ArticleDetailContainer,
+  ArticleTitleSection,
+  SvgBox,
+  ArticleInfoSection,
+  ArticleContentSection,
+} from './style';
+import { ReactComponent as TopNotice } from '../../assets/icons/TopNotice.svg';
+import TextViewer from '../TextViewer';
 
-function ArticleDetail({ title, content, createdAt, views }) {
+function ArticleDetail({ writer, isTop, title, content, createAt, view }) {
   return (
     <ArticleDetailContainer>
-      <ArticleTitleSection>
-        <div>{title}</div>
+      <ArticleTitleSection $isTop={isTop}>
+        {isTop ? (
+          <SvgBox>
+            <TopNotice />
+          </SvgBox>
+        ) : null}
+        <span>{title}</span>
       </ArticleTitleSection>
       <ArticleInfoSection>
-        <div>작성일 · {createdAt}</div>
-        <div>조회 · {views}</div>
+        <div>작성자 · {writer}</div>
+        <div>작성일 · {createAt?.slice(0, 10)}</div>
+        <div>조회 · {view}</div>
       </ArticleInfoSection>
-      <ArticleContentSection>{content}</ArticleContentSection>
+      <ArticleContentSection>
+        <TextViewer content={content} />
+      </ArticleContentSection>
     </ArticleDetailContainer>
   );
 }

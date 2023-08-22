@@ -3,8 +3,8 @@ import { PaginationContainer, PageNum, HiddenBtn } from './style';
 import { ReactComponent as PagePrevBtn } from '../../assets/icons/PagePrevBtn.svg';
 import { ReactComponent as PageNextBtn } from '../../assets/icons/PageNextBtn.svg';
 
-function Pagination({ totalPosts, postPerPages }) {
-  const [currentPage, setCurrentPage] = useState(1);
+function Pagination({ totalPosts, postPerPages, currentPage, setCurrentPage }) {
+  // const [currentPage, setCurrentPage] = useState(1);
   const [isFirstPage, setIsFirstPage] = useState(false);
   const [isLastPage, setIsLastPage] = useState(false);
   const [pageNumbers, setPageNumbers] = useState([]);

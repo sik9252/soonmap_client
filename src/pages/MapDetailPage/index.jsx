@@ -14,21 +14,15 @@ function MapDetailPage() {
   const [selectedFloorNum, setSelectedFloorNum] = useState(0);
   const [selectedFloorImage, setSelectedFloorImage] = useState('');
 
-  const {
-    data: getBuildingDetailResult,
-    isError: getBuildingDetailError,
-    refetch: buildingDetailRefetch,
-  } = useGetBuildingDetailRequest({ id: location.id }, false);
+  const { data: getBuildingDetailResult, isError: getBuildingDetailError } = useGetBuildingDetailRequest({
+    id: location.id,
+  });
 
   const {
     data: getFloorImageResult,
     isError: getFloorImageResultError,
     refetch: floorImageRefetch,
   } = useGetFloorImageRequest({ buildingId: location.id, floorValue: selectedFloorNum }, false);
-
-  useEffect(() => {
-    buildingDetailRefetch();
-  }, [location.id]);
 
   useEffect(() => {
     if (getBuildingDetailResult) {
