@@ -62,7 +62,7 @@ function Map() {
     };
 
     setKakaoMap(new kakao.maps.Map(container, options));
-  }, []);
+  }, [getBuildingResult]);
 
   useEffect(() => {
     if (kakaoMap !== null) {
