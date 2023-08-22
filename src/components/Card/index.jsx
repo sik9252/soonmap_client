@@ -2,7 +2,7 @@ import React from 'react';
 import { CardContainer, CardBackground, CardInfo } from './style';
 import { ReactComponent as ViewsIcon } from '../../assets/icons/ViewsIcon.svg';
 
-export const InfoCard = ({ thumbnail, title, views, onClick }) => {
+export const InfoCard = ({ thumbnail, title, view, onClick }) => {
   return (
     <CardContainer $thumbnail={thumbnail} onClick={onClick}>
       <CardBackground>
@@ -10,7 +10,7 @@ export const InfoCard = ({ thumbnail, title, views, onClick }) => {
           <div>{title}</div>
           <div>
             <ViewsIcon />
-            {views}
+            {view}
           </div>
         </CardInfo>
       </CardBackground>
