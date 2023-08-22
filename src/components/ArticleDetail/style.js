@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { FONT_STYLES } from '../../styles/common/font';
 import COLOR from '../../styles/common/color';
 
@@ -8,9 +8,24 @@ export const ArticleDetailContainer = styled.div`
 `;
 
 export const ArticleTitleSection = styled.div`
+  display: flex;
+  align-items: center;
   ${FONT_STYLES.P_B};
   font-size: 14px;
   color: ${COLOR.MAIN_BLUE};
+
+  ${({ $isTop }) =>
+    $isTop
+      ? css`
+          & > span {
+            padding-left: 8px;
+          }
+        `
+      : null}
+`;
+
+export const SvgBox = styled.div`
+  width: 34px;
 `;
 
 export const ArticleInfoSection = styled.div`
@@ -19,8 +34,8 @@ export const ArticleInfoSection = styled.div`
   color: ${COLOR.GRAY_2};
   padding: 10px 0;
 
-  & > div:nth-child(2) {
-    padding-left: 15px;
+  & > div {
+    padding-right: 15px;
   }
 `;
 

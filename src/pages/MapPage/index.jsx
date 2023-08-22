@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { MapContainer, SearchSection, MapSection } from './style';
 import Header from '../../components/Header';
 import SearchBar from '../../components/SearchBar';
@@ -6,7 +6,8 @@ import BuildingInfoPopup from '../../components/BuildingInfoPopup';
 import SelectedMarker from '../../assets/icons/SelectedMarker.svg';
 import DefaultMarker from '../../assets/icons/DefaultMarker.svg';
 import { ReactComponent as MapMyBtn } from '../../assets/icons/MapMyBtn.svg';
-import BuildingImage from '../../assets/images/Map.png';
+import { useGetBuildingRequest } from '../../api/Building';
+import toast from 'react-hot-toast';
 
 const { kakao } = window;
 
@@ -14,34 +15,28 @@ function Map() {
   const [kakaoMap, setKakaoMap] = useState(null);
 
   // 건물 리스트 및 선택된 건물 정보 관련 상태
-  const [allBuildingList, setAllBuildingList] = useState([
-    {
-      id: 1,
-      name: '자연과학관',
-      detail: '충남 아산시 신창면 읍내리 646',
-      image: BuildingImage,
-      posX: 36.7695631618121,
-      posY: 126.93001758315143,
-    },
-    {
-      id: 2,
-      name: '공학관',
-      detail: '충남 아산시 신창면 읍내리 646',
-      image: BuildingImage,
-      posX: 36.76927604997737,
-      posY: 126.9321683837876,
-    },
-    {
-      id: 3,
-      name: '학생회관',
-      detail: '충남 아산시 신창면 읍내리 646',
-      image: BuildingImage,
-      posX: 36.77000372339155,
-      posY: 126.93141952711613,
-    },
-  ]);
+  const [allBuildingList, setAllBuildingList] = useState([]);
   const [buildingInfoPopup, setBuildingInfoPopup] = useState(false);
   const [buildingInfo, setBuildingInfo] = useState({});
+  const [keyword, setKeyword] = useState('');
+
+  const {
+    data: getBuildingResult,
+    isError: getBuildingError,
+    refetch,
+  } = useGetBuildingRequest({ keyword: keyword }, false);
+
+  useEffect(() => {
+    refetch();
+  }, []);
+
+  useEffect(() => {
+    if (getBuildingResult) {
+      setAllBuildingList(getBuildingResult.data);
+    } else if (getBuildingError) {
+      toast.error('건물 목록을 불러오는데 실패했습니다.');
+    }
+  }, [getBuildingResult, getBuildingError]);
 
   // 마커 이미지 및 선택된 마커 객체 관련 변수
   const imageSize = new kakao.maps.Size(25, 25);
@@ -79,6 +74,7 @@ function Map() {
   }, [kakaoMap]);
 
   /** 2. 모든 건물 데이터에 대한 마커 선택 & 비선택 여부에 따른 마커 생성 */
+
   const changeMarkerImage = (marker) => {
     if (lastClickedMarker !== null) {
       lastClickedMarker.setImage(defaultMarkerImage);
@@ -106,20 +102,35 @@ function Map() {
   };
 
   useEffect(() => {
-    const positions = [...allBuildingList];
+    const positions = allBuildingList;
 
-    for (let i = 0; i < positions.length; i++) {
-      const latlng = new kakao.maps.LatLng(positions[i].posX, positions[i].posY);
-      createMarker(i, latlng, positions[i]);
+    if (allBuildingList.length > 1) {
+      positions.map((building) => {
+        const latlng = new kakao.maps.LatLng(building.latitude, building.longitude);
+        createMarker(building.id, latlng, building);
+      });
+    } else {
+      const latlng = new kakao.maps.LatLng(positions.latitude, positions.longitude);
+      createMarker(positions.id, latlng, positions);
     }
   }, [kakaoMap, allBuildingList]);
+
+  const handleOnEnterKeyDown = (e) => {
+    if (e.key === 'Enter') {
+      refetch();
+    }
+  };
 
   return (
     <MapContainer>
       <Header pageTitle={'지도 검색'} />
       <SearchSection>
         <MapMyBtn />
-        <SearchBar placeholder={'건물/강의실 이름을 입력해주세요.'} />
+        <SearchBar
+          placeholder={'건물/강의실 이름을 입력해주세요.'}
+          onChange={(e) => setKeyword(e.target.value)}
+          onKeyDown={handleOnEnterKeyDown}
+        />
       </SearchSection>
       <MapSection>
         <div id="map" />

@@ -4,6 +4,8 @@ import HomePage from '../pages/HomePage';
 import MapPage from '../pages/MapPage';
 import MapDetailPage from '../pages/MapDetailPage';
 import MyPage from '../pages/MyPage';
+import RegisterPage from '../pages/RegisterPage';
+import FindAccountPage from '../pages/FindAccountPage';
 import NoticePage from '../pages/NoticePage';
 import NoticeDetailPage from '../pages/NoticeDetailPage';
 import InfoPage from '../pages/InfoPage';
@@ -22,6 +24,8 @@ function Router() {
         <Route path="/map" element={<MapPage />} />
         <Route path="/map/:id" element={<MapDetailPage />} />
         <Route path="/my" element={<MyPage />} />
+        <Route path="/register" element={<RegisterPage />} />
+        <Route path="/find-account" element={<FindAccountPage />} />
         <Route path="/notice" element={<NoticePage />} />
         <Route path="/notice/:id" element={<NoticeDetailPage />} />
         <Route path="/info" element={<InfoPage />} />

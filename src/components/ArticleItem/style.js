@@ -14,15 +14,24 @@ export const ArticleTitleSection = styled.div`
   align-items: center;
   font-size: 14px;
 
+  & > span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
   ${({ $isTop }) =>
     $isTop
       ? css`
           & > span {
-            color: ${COLOR.TOP_NOTICE_COLOR};
             padding-left: 8px;
           }
         `
       : null}
+`;
+
+export const SvgBox = styled.div`
+  width: 34px;
 `;
 
 export const ArticleInfoSection = styled.div`
@@ -31,7 +40,7 @@ export const ArticleInfoSection = styled.div`
   color: ${COLOR.GRAY_2};
   padding-top: 10px;
 
-  & > div:nth-child(2) {
-    padding-left: 15px;
+  & > div {
+    padding-right: 15px;
   }
 `;

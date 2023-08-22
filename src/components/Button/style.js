@@ -10,7 +10,7 @@ export const StyledButton = styled.button`
   align-items: center;
   width: ${({ $width }) => ($width ? `${$width}px` : '100%')};
   height: ${({ $height }) => `${$height}px`};
-  background-color: ${COLOR.MAIN_BLUE};
+  background-color: ${({ $bgColor }) => ($bgColor ? $bgColor : `${COLOR.MAIN_BLUE}`)};
   color: ${COLOR.MAIN_WHITE};
   border-radius: 160px;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;

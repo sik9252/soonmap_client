@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import COLOR from '../../styles/common/color';
+import COLOR from '../../../styles/common/color';
 
 export const LoginContainer = styled.div`
   display: flex;
@@ -11,7 +11,7 @@ export const LoginContainer = styled.div`
 `;
 
 export const OptionSection = styled.div`
-  width: 80%;
+  width: 100%;
   max-width: 1024px;
   display: flex;
   flex-direction: column;

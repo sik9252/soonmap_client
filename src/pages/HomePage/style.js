@@ -10,6 +10,7 @@ export const HomeContainer = styled.div`
 export const SubTitle = styled.div`
   ${FONT_STYLES.P_B}
   font-size: 18px;
+  cursor: pointer;
 `;
 
 export const NoticeSection = styled.div`
