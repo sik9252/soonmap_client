@@ -103,15 +103,16 @@ function Map() {
 
   useEffect(() => {
     const positions = allBuildingList;
-
-    if (allBuildingList.length > 1) {
-      positions.map((building) => {
-        const latlng = new kakao.maps.LatLng(building.latitude, building.longitude);
-        createMarker(building.id, latlng, building);
-      });
-    } else {
-      const latlng = new kakao.maps.LatLng(positions.latitude, positions.longitude);
-      createMarker(positions.id, latlng, positions);
+    if (positions) {
+      if (positions.length > 1) {
+        positions.map((building) => {
+          const latlng = new kakao.maps.LatLng(building.latitude, building.longitude);
+          createMarker(building.id, latlng, building);
+        });
+      } else {
+        const latlng = new kakao.maps.LatLng(positions[0]?.latitude, positions[0]?.longitude);
+        createMarker(positions[0]?.id, latlng, positions[0]);
+      }
     }
   }, [kakaoMap, allBuildingList]);
 
