@@ -18,6 +18,7 @@ jobs:
           echo "VITE_KAKAO_API_KEY=$VITE_KAKAO_API_KEY" >> .env.production
         env:
           VITE_KAKAO_API_KEY: ${{ secrets.VITE_KAKAO_API_KEY }}
+          VITE_SERVER_IP: ${{ secrets.VITE_SERVER_IP }}
       - run: yarn install
       - run: yarn build
       - name: deploy to s3
