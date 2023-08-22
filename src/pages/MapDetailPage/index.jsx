@@ -13,6 +13,7 @@ function MapDetailPage() {
   const [selectedFloor, setSelectedFloor] = useState(floors[0].value);
   const [selectedFloorNum, setSelectedFloorNum] = useState(0);
   const [selectedFloorImage, setSelectedFloorImage] = useState('');
+  const [buildingName, setBuildingName] = useState('');
 
   const { data: getBuildingDetailResult, isError: getBuildingDetailError } = useGetBuildingDetailRequest({
     id: location.id,
@@ -33,6 +34,7 @@ function MapDetailPage() {
       }
 
       setFloors(floorList);
+      setBuildingName(getBuildingDetailResult.data.buildingName);
     } else if (getBuildingDetailError) {
       toast.error('건물 상세정보를 불러오는데 실패했습니다.');
     }
@@ -65,7 +67,7 @@ function MapDetailPage() {
 
   return (
     <MapDetailContainer>
-      <Header pageTitle={`OOO 상세정보`} />
+      <Header pageTitle={`${buildingName} 상세정보`} />
       <SelectSection>
         <SelectBar options={floors} selectedFloor={selectedFloor} setSelectedFloor={setSelectedFloor} />
       </SelectSection>
