@@ -9,7 +9,6 @@ export const RegisterContainer = styled.div`
 export const Notice = styled.div`
   color: #dc143c;
   font-size: 12px;
-  margin-bottom: 5px;
 `;
 
 export const InputSection = styled.div`
@@ -30,4 +29,14 @@ export const InputBox = styled.div`
   & > button {
     margin-top: 10px;
   }
+
+  & > div:nth-of-type(1) {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+`;
+
+export const Domain = styled.div`
+  margin-left: 10px;
 `;

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { RegisterContainer, Notice, InputSection, OtherOptionSection, InputBox } from './style';
+import { RegisterContainer, Notice, InputSection, OtherOptionSection, InputBox, Domain } from './style';
 import Header from '../../components/Header';
 import { SquareInput } from '../../components/Input';
 import { Button } from '../../components/Button';
@@ -15,7 +15,10 @@ function RegisterPage() {
       <InputSection>
         <Notice>순천향대학교 이메일을 통해 해당 대학교 학생임을 인증한 후 가입을 진행할 수 있습니다.</Notice>
         <InputBox>
-          <SquareInput placeholder="이메일 ex) example@sch.ac.kr" />
+          <div>
+            <SquareInput placeholder="이메일을 입력해주세요. ex) abcd123" />
+            <Domain>@sch.ac.kr</Domain>
+          </div>
           <Button height={48} bgColor={'#4B7CC4'}>
             인증번호 받기
           </Button>
