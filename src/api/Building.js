@@ -17,11 +17,24 @@ export function useGetBuildingRequest(params, isEnabled) {
 // 건물 상세요청
 export function useGetBuildingDetailRequest(params, isEnabled) {
   return useQuery(
-    [`/building/${params.id}`, params],
+    [`/building/${params.id}/count`, params],
     () =>
       httpClient({
         method: 'GET',
-        url: `/building/${params.id}`,
+        url: `/building/${params.id}/count`,
+      }),
+    { enabled: isEnabled },
+  );
+}
+
+// 층별 도면요청
+export function useGetFloorImageRequest(params, isEnabled) {
+  return useQuery(
+    [`/floor?buildingId=${params.buildingId}&floor=${params.floorValue}`, params],
+    () =>
+      httpClient({
+        method: 'GET',
+        url: `/floor?buildingId=${params.buildingId}&floor=${params.floorValue}`,
       }),
     { enabled: isEnabled },
   );

@@ -6,7 +6,6 @@ import BuildingInfoPopup from '../../components/BuildingInfoPopup';
 import SelectedMarker from '../../assets/icons/SelectedMarker.svg';
 import DefaultMarker from '../../assets/icons/DefaultMarker.svg';
 import { ReactComponent as MapMyBtn } from '../../assets/icons/MapMyBtn.svg';
-import BuildingImage from '../../assets/images/Map.png';
 import { useGetBuildingRequest } from '../../api/Building';
 import toast from 'react-hot-toast';
 
@@ -106,13 +105,13 @@ function Map() {
     const positions = allBuildingList;
 
     if (allBuildingList.length > 1) {
-      positions.map((building, index) => {
+      positions.map((building) => {
         const latlng = new kakao.maps.LatLng(building.latitude, building.longitude);
-        createMarker(index, latlng, building);
+        createMarker(building.id, latlng, building);
       });
     } else {
       const latlng = new kakao.maps.LatLng(positions.latitude, positions.longitude);
-      createMarker(0, latlng, positions);
+      createMarker(positions.id, latlng, positions);
     }
   }, [kakaoMap, allBuildingList]);
 
