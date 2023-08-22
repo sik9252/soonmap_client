@@ -46,9 +46,11 @@ function RegisterPage() {
           <InputBox>
             <div>
               <SquareInput placeholder="인증번호를 입력해주세요." />
-              <TimerSection>{timerComponent}</TimerSection>
+              {isCertificated ? <TimerSection>인증완료</TimerSection> : <TimerSection>{timerComponent}</TimerSection>}
             </div>
-            <Button height={48}>인증하기</Button>
+            <Button height={48} bgColor={'#4B7CC4'}>
+              인증하기
+            </Button>
           </InputBox>
         ) : (
           ''

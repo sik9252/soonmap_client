@@ -1,9 +1,10 @@
 import React from 'react';
 import { StyledSquareInput } from './style';
 
-export const SquareInput = ({ width, height, placeholder, onChange, value, defaultValue, type }) => {
+export const SquareInput = ({ ref, width, height, placeholder, onChange, value, defaultValue, type }) => {
   return (
     <StyledSquareInput
+      ref={ref}
       width={width}
       height={height}
       placeholder={placeholder}
