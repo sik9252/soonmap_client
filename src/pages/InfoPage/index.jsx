@@ -1,81 +1,85 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Header from '../../components/Header';
 import SearchBar from '../../components/SearchBar';
 import ArticleItem from '../../components/ArticleItem';
 import Pagination from '../../components/Pagination';
-import { InfoContainer, SearchSection, ArticleList } from './style';
+import { InfoContainer, SearchSection, ArticleList, ArticleNotFound } from './style';
+import { useGetInfoRequest } from '../../api/Info';
+import toast from 'react-hot-toast';
 
 function InfoPage() {
   const navigate = useNavigate();
-  const [InfoData, setInfoData] = useState([
-    {
-      id: 1,
-      title: '정보 게시판1',
-      content: '정보 게시판1 내용',
-      createdAt: '2023.07.12',
-      views: 22,
-    },
-    {
-      id: 2,
-      title: '정보 게시판2',
-      content: '정보 게시판2 내용',
-      createdAt: '2023.07.12',
-      views: 22,
-    },
-    {
-      id: 3,
-      title: '정보 게시판3',
-      content: '정보 게시판3 내용',
-      isTop: false,
-      createdAt: '2023.07.12',
-      views: 22,
-    },
-    {
-      id: 4,
-      title: '정보 게시판4',
-      content: '정보 게시판4 내용',
-      isTop: false,
-      createdAt: '2023.07.12',
-      views: 22,
-    },
-    {
-      id: 5,
-      title: '정보 게시판5',
-      content: '정보 게시판5 내용',
-      isTop: false,
-      createdAt: '2023.07.12',
-      views: 22,
-    },
-  ]);
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPosts, setTotalPosts] = useState(1);
+  const [keyword, setKeyword] = useState('');
+
+  const {
+    data: infoResult,
+    isError: infoError,
+    refetch: infoRefetch,
+  } = useGetInfoRequest({ page: currentPage - 1, title: keyword }, false);
+
+  const [InfoData, setInfoData] = useState([]);
+
+  useEffect(() => {
+    infoRefetch();
+  }, [currentPage]);
+
+  useEffect(() => {
+    if (infoResult) {
+      setInfoData(infoResult.data.articleList);
+      setTotalPosts(infoResult.data.totalPage);
+    } else if (infoError) {
+      toast.error('정보글을 불러오는데 실패했습니다.');
+    }
+  }, [infoResult, infoError]);
 
   const clickInfo = (infoId) => {
     navigate(`/info/${infoId}`);
   };
 
-  // 테스트용 총 페이지 수
-  const totalPosts = 36;
-  const postPerPages = 5;
+  const handleKeyword = (e) => {
+    setKeyword(e.target.value);
+  };
+
+  const handleOnEnterKeyDown = (e) => {
+    if (e.key === 'Enter') {
+      infoRefetch();
+    }
+  };
 
   return (
     <InfoContainer>
       <Header pageTitle={'정보게시판'} />
       <SearchSection>
-        <SearchBar placeholder={'검색어를 입력해주세요.'} />
+        <SearchBar placeholder={'검색어를 입력해주세요.'} onChange={handleKeyword} onKeyDown={handleOnEnterKeyDown} />
       </SearchSection>
       <ArticleList>
-        {InfoData &&
-          InfoData.map((info) => (
-            <ArticleItem
-              key={info.id}
-              title={info.title}
-              createdAt={info.createdAt}
-              views={info.views}
-              onClick={() => clickInfo(info.id)}
-            />
-          ))}
+        {InfoData && InfoData.length > 0 ? (
+          <>
+            {InfoData.map((info) => (
+              <ArticleItem
+                key={info.id}
+                writer={info.writer}
+                title={info.title}
+                createAt={info.createAt}
+                view={info.view}
+                onClick={() => clickInfo(info.id)}
+              />
+            ))}
+          </>
+        ) : (
+          <ArticleNotFound>게시글이 없습니다.</ArticleNotFound>
+        )}
       </ArticleList>
-      <Pagination totalPosts={totalPosts} postPerPages={postPerPages} />
+      <Pagination
+        totalPosts={totalPosts * 5}
+        postPerPages={5}
+        currentPage={currentPage}
+        setCurrentPage={setCurrentPage}
+      />
     </InfoContainer>
   );
 }

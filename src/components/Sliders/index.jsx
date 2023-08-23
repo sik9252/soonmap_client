@@ -26,9 +26,9 @@ export const NoticeSlider = ({ noticeData }) => {
           noticeData.map((notice) => (
             <SplideSlide key={notice.id} onClick={() => clickNotice(notice.id)}>
               <div>
-                <div>{notice.author}</div>
+                <div>{notice.writer}</div>
                 <div>·</div>
-                <div> {notice.createdAt}</div>
+                <div> {notice.createAt?.slice(0, 10)}</div>
               </div>
               <div>{notice.title}</div>
             </SplideSlide>

@@ -16,5 +16,6 @@ export const FloorImageSection = styled.div`
   & > img {
     border-top: 1px solid ${COLOR.GRAY_0};
     border-bottom: 1px solid ${COLOR.GRAY_0};
+    width: 90%;
   }
 `;

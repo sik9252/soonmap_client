@@ -10,7 +10,7 @@ export const NoticeSliderStyle = styled.div`
 
   .splide {
     height: 100%;
-    padding: 15px;
+    padding: 7px 10px 10px 10px;
     background-color: rgba(255, 255, 255, 0.3);
     border-radius: 8px;
     color: ${COLOR.MAIN_WHITE};
@@ -31,6 +31,7 @@ export const NoticeSliderStyle = styled.div`
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
+      font-weight: 700;
     }
   }
 

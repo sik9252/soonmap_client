@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { MyContainer, UserName } from './style';
 import Header from '../../components/Header';
-import Login from '../../components/MyPageWithLogin';
-import NotLogin from '../../components/MyPageWithNotLogin';
+import Login from './MyPageWithLogin';
+import NotLogin from './MyPageWithNotLogin';
 
 const LoginHeader = () => {
   return (
