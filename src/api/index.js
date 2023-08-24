@@ -49,11 +49,7 @@ useAxios.interceptors.response.use(
 
       if (refreshToken) {
         try {
-          const response = await useAxios.post(
-            '/admin/refresh',
-            { refreshToken },
-            { headers: { skipAuthHeader: true } },
-          );
+          const response = await useAxios.post('/refresh', { refreshToken }, { headers: { skipAuthHeader: true } });
 
           if (response.status === 200) {
             localStorage.setItem('accessToken', response.data);
@@ -66,7 +62,7 @@ useAxios.interceptors.response.use(
         } catch (error) {
           localStorage.removeItem('accessToken');
           localStorage.removeItem('refreshToken');
-          //window.location.href = '/login';
+          window.location.href = '/my';
         }
       }
     }

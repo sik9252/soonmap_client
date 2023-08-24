@@ -6,9 +6,11 @@ import Map from '../../assets/icons/icon_footer_map.png';
 import MyPage from '../../assets/icons/IconFooterMy.svg';
 import Share from '../../assets/icons/IconFooterShare.svg';
 import AlertModal from '../../components/AlertModal';
+import ShareModal from '../../components/ShareModal';
 
 export const MenuBar = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isShareModalOpen, setIsShareModalOpen] = useState(false);
 
   const openAlertModal = (e) => {
     e.preventDefault();
@@ -19,6 +21,15 @@ export const MenuBar = () => {
     setIsModalOpen(false);
   };
 
+  const openShareModal = (e) => {
+    e.preventDefault();
+    setIsShareModalOpen(true);
+  };
+
+  const closeShareModal = () => {
+    setIsShareModalOpen(false);
+  };
+
   return (
     <FooterContainer>
       <AlertModal
@@ -27,6 +38,13 @@ export const MenuBar = () => {
         isOpen={isModalOpen}
         closeModal={closeAlertModal}
       />
+      <ShareModal
+        title={'공유하기'}
+        text={'아래 링크를 복사하여 다른 사람들에게 공유할 수 있어요.'}
+        isOpen={isShareModalOpen}
+        closeModal={closeShareModal}
+      />
+
       <List>
         <ListItem $home={Home}>
           <Link2 href="/">홈</Link2>
@@ -40,7 +58,7 @@ export const MenuBar = () => {
         <ListItem $myPage={MyPage}>
           <Link2 href="/my">마이홈</Link2>
         </ListItem>
-        <ListItem $share={Share} onClick={openAlertModal}>
+        <ListItem $share={Share} onClick={openShareModal}>
           <Link2 href="#">공유</Link2>
         </ListItem>
       </List>

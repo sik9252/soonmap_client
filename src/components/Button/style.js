@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import COLOR from '../../styles/common/color';
 import { FONT_STYLES } from '../../styles/common/font';
 
@@ -15,11 +15,27 @@ export const StyledButton = styled.button`
   border-radius: 160px;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 
-  &:hover {
+  /* &:hover {
     cursor: pointer;
     transition: 0.3s;
     background-color: ${COLOR.MAIN_BLUE_HOVER};
-  }
+  } */
+
+  ${({ $disabled }) =>
+    $disabled
+      ? css`
+          &:hover {
+            cursor: wait;
+          }
+          opacity: 0.5;
+        `
+      : css`
+          &:hover {
+            cursor: pointer;
+            transition: 0.3s;
+            background-color: ${COLOR.MAIN_BLUE_HOVER};
+          }
+        `}
 `;
 
 export const StyledCancelButton = styled.button`

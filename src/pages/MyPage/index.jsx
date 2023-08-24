@@ -17,8 +17,8 @@ function MyPage() {
 
   return (
     <MyContainer>
-      <Header pageTitle={isLogin ? <LoginHeader /> : '로그인'} />
-      {isLogin ? <Login /> : <NotLogin />}
+      <Header pageTitle={localStorage.getItem('accessToken') ? <LoginHeader /> : '로그인'} />
+      {localStorage.getItem('accessToken') ? <Login /> : <NotLogin />}
     </MyContainer>
   );
 }
