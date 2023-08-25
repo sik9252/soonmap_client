@@ -6,7 +6,6 @@ import ArticleItem from '../../components/ArticleItem';
 import Pagination from '../../components/Pagination';
 import { NoticeContainer, SearchSection, ArticleList, ArticleNotFound } from './style';
 import { useGetNoticeRequest, useGetTopNoticeRequest } from '../../api/Notice';
-import toast from 'react-hot-toast';
 
 function NoticePage() {
   const navigate = useNavigate();
@@ -34,7 +33,7 @@ function NoticePage() {
       setNoticeData(noticeResult.data.noticeList);
       setTotalPosts(noticeResult.data.totalPage);
     } else if (noticeError) {
-      toast.error('공지사항을 불러오는데 실패했습니다.');
+      alert('공지사항을 불러오는데 실패했습니다.');
     }
   }, [noticeResult, noticeError]);
 
@@ -42,7 +41,7 @@ function NoticePage() {
     if (topNoticeResult) {
       setTopNoticeData(topNoticeResult.data);
     } else if (topNoticeError) {
-      toast.error('공지사항을 불러오는데 실패했습니다.');
+      alert('공지사항을 불러오는데 실패했습니다.');
     }
   }, [topNoticeResult, topNoticeError]);
 

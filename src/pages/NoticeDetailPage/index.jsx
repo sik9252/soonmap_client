@@ -4,7 +4,6 @@ import { NoticeDetailContainer } from './style';
 import Header from '../../components/Header';
 import ArticleDetail from '../../components/ArticleDetail';
 import { useGetNoticeDetailRequest } from '../../api/Notice';
-import toast from 'react-hot-toast';
 
 function NoticeDetailPage() {
   const location = useParams();
@@ -17,7 +16,7 @@ function NoticeDetailPage() {
     if (noticeDetailResult) {
       setNotice(noticeDetailResult.data);
     } else if (noticeDetailError) {
-      toast.error('게시글을 불러오는데 실패했습니다.');
+      alert('게시글을 불러오는데 실패했습니다.');
     }
   }, [noticeDetailResult, noticeDetailError]);
 

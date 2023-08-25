@@ -3,7 +3,6 @@ import { SquareInput } from '../../components/Input';
 import { Button } from '../../components/Button';
 import { InputBox, Domain, TimerSection } from './style';
 import Timer from '../../utils/timer';
-import toast from 'react-hot-toast';
 
 function FindPassword() {
   const [isEmailValidate, setIsEmailValidate] = useState(false);
@@ -17,7 +16,7 @@ function FindPassword() {
 
   useEffect(() => {
     if (isTimeUp) {
-      toast.error('인증번호가 만료되었습니다. 다시 받아주세요.');
+      alert('인증번호가 만료되었습니다. 다시 받아주세요.');
       setIsEmailValidate(false);
     }
 

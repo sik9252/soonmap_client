@@ -11,7 +11,7 @@ export async function httpClient(config, headers) {
     const response = await useAxios.request({ ...config, headers: headers });
     return response;
   } catch (error) {
-    if (isAxiosError < AxiosError > error) {
+    if (isAxiosError(error)) {
       throw new Error(error.response.data.message ? error.response.data.message : '알 수 없는 문제가 발생했습니다.');
     }
   }

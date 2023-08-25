@@ -45,6 +45,16 @@ export function useLoginRequest() {
   );
 }
 
+// 로그아웃
+export function useLogoutRequest() {
+  return useMutation(() =>
+    httpClient({
+      method: 'POST',
+      url: '/logout',
+    }),
+  );
+}
+
 // 리프레시
 export function useRefreshRequest() {
   return useMutation((data) =>
@@ -52,6 +62,16 @@ export function useRefreshRequest() {
       method: 'POST',
       url: '/refresh',
       data,
+    }),
+  );
+}
+
+// 회원탈퇴
+export function useWithDrawlRequest() {
+  return useMutation(() =>
+    httpClient({
+      method: 'POST',
+      url: '/withdraw',
     }),
   );
 }

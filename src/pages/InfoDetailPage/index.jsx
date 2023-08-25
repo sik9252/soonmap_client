@@ -1,23 +1,34 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { InfoDetailContainer } from './style';
 import Header from '../../components/Header';
 import ArticleDetail from '../../components/ArticleDetail';
 import { useGetInfoDetailRequest } from '../../api/Info';
-import toast from 'react-hot-toast';
 
 function InfoDetailPage() {
   const location = useParams();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!localStorage.getItem('accessToken') || !localStorage.getItem('refreshToken')) {
+      alert('로그인 후 사용가능합니다.');
+      navigate('/my');
+    }
+  }, []);
 
   const [info, setInfo] = useState({});
-
   const { data: infoDetailResult, isError: infoDetailError } = useGetInfoDetailRequest({ id: location.id });
 
   useEffect(() => {
     if (infoDetailResult) {
       setInfo(infoDetailResult.data);
     } else if (infoDetailError) {
-      toast.error('게시글을 불러오는데 실패했습니다.');
+      if (infoDetailError.status === 401) {
+        alert('로그인 후 사용가능합니다.');
+        navigate('/my');
+      } else {
+        alert('게시글을 불러오는데 실패했습니다.');
+      }
     }
   }, [infoDetailResult, infoDetailError]);
 

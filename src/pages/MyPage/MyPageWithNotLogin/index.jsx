@@ -15,9 +15,10 @@ function NotLogin() {
 
   useEffect(() => {
     if (loginData) {
-      navigate('/');
       localStorage.setItem('accessToken', loginData.data.accessToken);
       localStorage.setItem('refreshToken', loginData.data.refreshToken);
+      localStorage.setItem('userId', loginData.data.name);
+      navigate('/');
     } else if (loginError) {
       alert(loginError.message);
     }

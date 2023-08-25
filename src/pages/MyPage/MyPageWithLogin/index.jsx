@@ -1,19 +1,67 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { LoginContainer, OptionSection } from './style';
 import { Button, CancelButton } from '../../../components/Button';
+import { useLogoutRequest, useWithDrawlRequest } from '../../../api/Account';
 
 function Login() {
+  const navigate = useNavigate();
+  const { mutate: logoutRequest, data: logoutData, error: logoutError, isLoading: logoutLoading } = useLogoutRequest();
+  const {
+    mutate: withDrawlRequest,
+    data: withDrawlData,
+    error: withDrawlError,
+    isLoading: withDrawlLoading,
+  } = useWithDrawlRequest();
+
   const handleInquiryBtn = () => {
     alert('준비중인 기능입니다.');
   };
 
+  const handleLogoutBtn = () => {
+    logoutRequest();
+  };
+
+  useEffect(() => {
+    if (logoutData) {
+      alert('로그아웃 되었습니다.');
+      localStorage.removeItem('accessToken');
+      localStorage.removeItem('removeToken');
+      localStorage.removeItem('user');
+      navigate('/');
+    } else if (logoutError) {
+      alert(logoutError.message);
+    }
+  }, [logoutData, logoutError]);
+
+  const handleWithDrawlBtn = () => {
+    withDrawlRequest();
+  };
+
+  useEffect(() => {
+    if (withDrawlData) {
+      alert('탈퇴가 완료되었습니다.');
+      localStorage.removeItem('accessToken');
+      localStorage.removeItem('removeToken');
+      localStorage.removeItem('user');
+      navigate('/');
+    } else if (withDrawlError) {
+      alert(withDrawlError.message);
+    }
+  }, [withDrawlData, withDrawlError]);
+
   return (
     <LoginContainer>
       <OptionSection>
+        <Button height={48} onClick={() => handleLogoutBtn()} disabled={logoutLoading}>
+          로그아웃
+        </Button>
         <Button height={48} onClick={() => handleInquiryBtn()}>
           문의하기
         </Button>
-        <CancelButton height={48}>회원 탈퇴</CancelButton>
+        <CancelButton height={48} onClick={() => handleWithDrawlBtn()} disabled={withDrawlLoading}>
+          회원 탈퇴
+        </CancelButton>
       </OptionSection>
     </LoginContainer>
   );

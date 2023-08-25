@@ -5,7 +5,7 @@ import Header from '../../components/Header';
 import { SquareInput } from '../../components/Input';
 import { Button } from '../../components/Button';
 import Timer from '../../utils/timer';
-import toast from 'react-hot-toast';
+
 import { useRegisterEmailValidateRequest, useRegisterCodeValidateRequest, useRegisterRequest } from '../../api/Account';
 
 function RegisterPage() {

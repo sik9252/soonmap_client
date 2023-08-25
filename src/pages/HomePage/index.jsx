@@ -9,7 +9,6 @@ import AdImg_1 from '../../assets/images/Ad1.png';
 import AdImg_2 from '../../assets/images/Ad2.jpg';
 import AdImg_3 from '../../assets/images/Ad3.jpg';
 import { useGetMainNoticeRequest, useGetMainInfoRequest } from '../../api/Main';
-import toast from 'react-hot-toast';
 
 function Home() {
   const navigate = useNavigate();
@@ -38,7 +37,7 @@ function Home() {
     if (mainNoticeResult) {
       setNoticeData(mainNoticeResult.data);
     } else if (mainNoticeError) {
-      toast.error('공지사항을 불러오는데 실패했습니다.');
+      alert('공지사항을 불러오는데 실패했습니다.');
     }
   }, [mainNoticeResult, mainNoticeError]);
 
@@ -46,7 +45,7 @@ function Home() {
     if (mainInfoResult) {
       setInfoData(mainInfoResult.data);
     } else if (mainInfoError) {
-      toast.error('정보글을 불러오는데 실패했습니다.');
+      alert('정보글을 불러오는데 실패했습니다.');
     }
   }, [mainInfoResult, mainInfoError]);
 
