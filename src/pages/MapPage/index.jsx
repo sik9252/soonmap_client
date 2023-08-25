@@ -7,7 +7,6 @@ import SelectedMarker from '../../assets/icons/SelectedMarker.svg';
 import DefaultMarker from '../../assets/icons/DefaultMarker.svg';
 import { ReactComponent as MapMyBtn } from '../../assets/icons/MapMyBtn.svg';
 import { useGetBuildingRequest } from '../../api/Building';
-import toast from 'react-hot-toast';
 
 const { kakao } = window;
 
@@ -34,7 +33,7 @@ function Map() {
     if (getBuildingResult) {
       setAllBuildingList(getBuildingResult.data);
     } else if (getBuildingError) {
-      toast.error('건물 목록을 불러오는데 실패했습니다.');
+      alert('건물 목록을 불러오는데 실패했습니다.');
     }
   }, [getBuildingResult, getBuildingError]);
 

@@ -6,7 +6,6 @@ import ArticleItem from '../../components/ArticleItem';
 import Pagination from '../../components/Pagination';
 import { InfoContainer, SearchSection, ArticleList, ArticleNotFound } from './style';
 import { useGetInfoRequest } from '../../api/Info';
-import toast from 'react-hot-toast';
 
 function InfoPage() {
   const navigate = useNavigate();
@@ -32,7 +31,7 @@ function InfoPage() {
       setInfoData(infoResult.data.articleList);
       setTotalPosts(infoResult.data.totalPage);
     } else if (infoError) {
-      toast.error('정보글을 불러오는데 실패했습니다.');
+      alert('정보글을 불러오는데 실패했습니다.');
     }
   }, [infoResult, infoError]);
 

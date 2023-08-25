@@ -4,7 +4,6 @@ import { MapDetailContainer, SelectSection, FloorImageSection } from './style';
 import Header from '../../components/Header';
 import SelectBar from '../../components/SelectBar';
 import { useGetBuildingDetailRequest, useGetFloorImageRequest } from '../../api/Building';
-import toast from 'react-hot-toast';
 
 function MapDetailPage() {
   const location = useParams();
@@ -36,7 +35,7 @@ function MapDetailPage() {
       setFloors(floorList);
       setBuildingName(getBuildingDetailResult.data.buildingName);
     } else if (getBuildingDetailError) {
-      toast.error('건물 상세정보를 불러오는데 실패했습니다.');
+      alert('건물 상세정보를 불러오는데 실패했습니다.');
     }
   }, [getBuildingDetailResult, getBuildingDetailError]);
 
@@ -61,7 +60,7 @@ function MapDetailPage() {
     if (getFloorImageResult) {
       setSelectedFloorImage(getFloorImageResult.data);
     } else if (getFloorImageResultError) {
-      toast.error('도면 이미지를 불러오는데 실패했습니다.');
+      alert('도면 이미지를 불러오는데 실패했습니다.');
     }
   }, [getFloorImageResult, getFloorImageResultError]);
 

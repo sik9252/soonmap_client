@@ -7,7 +7,7 @@ import NotLogin from './MyPageWithNotLogin';
 const LoginHeader = () => {
   return (
     <>
-      <UserName>홍길동</UserName>님 안녕하세요.
+      <UserName>{localStorage.getItem('userId')}</UserName>님 안녕하세요.
     </>
   );
 };
