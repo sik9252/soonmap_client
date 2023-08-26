@@ -45,14 +45,14 @@ useAxios.interceptors.response.use(
     if (error.response.status === 401 && !originalRequest._retry) {
       originalRequest._retry = true;
 
-      const refreshToken = localStorage.getItem('refreshToken');
+      const refreshToken = localStorage.getItem('user-refreshToken');
 
       if (refreshToken) {
         try {
           const response = await useAxios.post('/refresh', { refreshToken }, { headers: { skipAuthHeader: true } });
 
           if (response.status === 200) {
-            localStorage.setItem('accessToken', response.data);
+            localStorage.setItem('user-accessToken', response.data);
 
             if (originalRequest && originalRequest.headers) {
               originalRequest.headers['Authorization'] = `Bearer ${response.data}`;
@@ -60,8 +60,9 @@ useAxios.interceptors.response.use(
             }
           }
         } catch (error) {
-          localStorage.removeItem('accessToken');
-          localStorage.removeItem('refreshToken');
+          localStorage.removeItem('user-accessToken');
+          localStorage.removeItem('user-refreshToken');
+          localStorage.removeItem('user-userId');
           window.location.href = '/my';
         }
       }
