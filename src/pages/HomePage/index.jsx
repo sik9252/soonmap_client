@@ -5,9 +5,7 @@ import { NoticeSlider, AdSlider } from '../../components/Sliders';
 import { HomeContainer, SubTitle, NoticeSection, AdSection, InfoSection, InfoList } from './style';
 import backgroundImage from '../../assets/images/NoticeBg.png';
 import { ReactComponent as MoreBtn } from '../../assets/icons/MoreBtn.svg';
-import AdImg_1 from '../../assets/images/Ad1.png';
-import AdImg_2 from '../../assets/images/Ad2.jpg';
-import AdImg_3 from '../../assets/images/Ad3.jpg';
+import RecruitAdImage from '../../assets/images/advertise.png';
 import { useGetMainNoticeRequest, useGetMainInfoRequest } from '../../api/Main';
 
 function Home() {
@@ -17,15 +15,18 @@ function Home() {
   const [adData, setAdData] = useState([
     {
       id: 1,
-      image: AdImg_1,
+      image: RecruitAdImage,
+      url: 'https://forms.gle/eojFpQw1CUNS8YCW8',
     },
     {
       id: 2,
-      image: AdImg_2,
+      image: RecruitAdImage,
+      url: 'https://forms.gle/eojFpQw1CUNS8YCW8',
     },
     {
       id: 3,
-      image: AdImg_3,
+      image: RecruitAdImage,
+      url: 'https://forms.gle/eojFpQw1CUNS8YCW8',
     },
   ]);
   const [infoData, setInfoData] = useState([]);

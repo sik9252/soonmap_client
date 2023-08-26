@@ -61,13 +61,7 @@ export const AdSliderStyle = styled.div`
 
   .splide__slide {
     width: 100%;
-    height: 240px;
-
-    & > img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: 20px;
-    }
+    height: 100%;
+    border-radius: 10px;
   }
 `;

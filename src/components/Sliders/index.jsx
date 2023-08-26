@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { NoticeSliderStyle, AdSliderStyle } from './style';
 import { SplideSlide } from '@splidejs/react-splide';
 import Slider from '../Slider';
+import { Image } from '@chakra-ui/react';
 
 export const NoticeSlider = ({ noticeData }) => {
   const navigate = useNavigate();
@@ -39,6 +40,10 @@ export const NoticeSlider = ({ noticeData }) => {
 };
 
 export const AdSlider = ({ adData }) => {
+  const handleAdLink = (url) => {
+    window.open(url, '_blank');
+  };
+
   return (
     <AdSliderStyle>
       <Slider
@@ -54,7 +59,15 @@ export const AdSlider = ({ adData }) => {
         {adData &&
           adData.map((ad) => (
             <SplideSlide key={ad.id}>
-              <img src={ad.image} alt="광고" />
+              <Image
+                src={ad.image}
+                alt=""
+                w="100%"
+                h="100%"
+                objectFit="contain"
+                borderRadius="10px"
+                onClick={() => handleAdLink(ad.url)}
+              />
             </SplideSlide>
           ))}
       </Slider>
