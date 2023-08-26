@@ -38,7 +38,7 @@ export const ArticleInfoSection = styled.div`
   display: flex;
   font-size: 12px;
   color: ${COLOR.GRAY_2};
-  padding-top: 10px;
+  padding-top: 8px;
 
   & > div {
     padding-right: 15px;

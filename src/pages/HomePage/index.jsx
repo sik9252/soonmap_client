@@ -83,6 +83,7 @@ function Home() {
             infoData.map((info) => (
               <InfoCard
                 key={info.id}
+                category={info.articleTypeName}
                 thumbnail={info.thumbnail}
                 title={info.title}
                 view={info.view}
