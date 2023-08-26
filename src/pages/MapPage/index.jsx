@@ -38,8 +38,8 @@ function Map() {
   }, [getBuildingResult, getBuildingError]);
 
   // 마커 이미지 및 선택된 마커 객체 관련 변수
-  const imageSize = new kakao.maps.Size(25, 25);
-  const imageOffset = new kakao.maps.Point(10, 30);
+  const imageSize = new kakao.maps.Size(35, 30);
+  const imageOffset = new kakao.maps.Point(15, 30);
   const defaultMarkerImage = new kakao.maps.MarkerImage(DefaultMarker, imageSize, { offset: imageOffset });
   const selectedMarkerImage = new kakao.maps.MarkerImage(SelectedMarker, imageSize, { offset: imageOffset });
   let lastClickedMarker = null;
@@ -73,7 +73,6 @@ function Map() {
   }, [kakaoMap]);
 
   /** 2. 모든 건물 데이터에 대한 마커 선택 & 비선택 여부에 따른 마커 생성 */
-
   const changeMarkerImage = (marker) => {
     if (lastClickedMarker !== null) {
       lastClickedMarker.setImage(defaultMarkerImage);
@@ -90,6 +89,34 @@ function Map() {
       position: latlng,
       image: defaultMarkerImage,
     });
+
+    if (info?.uniqueNumber.length > 1) {
+      const overlayContent =
+        '<div style="font-size: 10px; font-weight: 700; position: absolute; bottom: 11px; left: -4px; color: #FFFFFF;">' +
+        info?.uniqueNumber +
+        '</div>';
+
+      const overlay = new kakao.maps.CustomOverlay({
+        content: info?.uniqueNumber !== 'NONE' ? overlayContent : '',
+        map: kakaoMap,
+        position: marker.getPosition(),
+      });
+
+      overlay.setMap(kakaoMap);
+    } else {
+      const overlayContent =
+        '<div style="font-size: 10px; font-weight: 700; position: absolute; bottom: 11px; left: -0.5px; color: #FFFFFF;">' +
+        info?.uniqueNumber +
+        '</div>';
+
+      const overlay = new kakao.maps.CustomOverlay({
+        content: info?.uniqueNumber !== 'NONE' ? overlayContent : '',
+        map: kakaoMap,
+        position: marker.getPosition(),
+      });
+
+      overlay.setMap(kakaoMap);
+    }
 
     kakao.maps.event.addListener(marker, 'click', function () {
       changeMarkerImage(marker);
