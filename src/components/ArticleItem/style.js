@@ -15,6 +15,7 @@ export const ArticleTitleSection = styled.div`
   font-size: 14px;
 
   & > span {
+    max-width: 250px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;

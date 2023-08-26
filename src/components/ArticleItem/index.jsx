@@ -7,8 +7,12 @@ import DefaultThumbnail from '/soonmap.png';
 function ArticleItem({ location, isTop, writer, thumbnail, category, title, createAt, view, onClick }) {
   return (
     <ArticleItemContainer onClick={onClick}>
-      <Flex>
-        {location === '정보' ? <Image src={thumbnail ? thumbnail : DefaultThumbnail} w="45px" mr="10px" /> : ''}
+      <Flex alignItems="center">
+        {location === '정보' ? (
+          <Image src={thumbnail ? thumbnail : DefaultThumbnail} w="45px" h="45px" mr="10px" />
+        ) : (
+          ''
+        )}
         <Box>
           <ArticleTitleSection $isTop={isTop}>
             {isTop ? (
