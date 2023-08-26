@@ -62,6 +62,8 @@ function InfoPage() {
             {InfoData.map((info) => (
               <ArticleItem
                 key={info.id}
+                location="정보"
+                thumbnail={info.thumbnail}
                 writer={info.writer}
                 category={info.articleTypeName}
                 title={info.title}

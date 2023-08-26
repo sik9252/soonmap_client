@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import COLOR from '../../styles/common/color';
+import defaultThumbnail from '/soonmap.png';
 
 export const CardContainer = styled.div`
   position: relative;
@@ -8,8 +9,8 @@ export const CardContainer = styled.div`
   border-radius: 10px;
   margin: 3px 0;
   cursor: pointer;
-  background-image: ${({ $thumbnail }) => `url('${$thumbnail}')`};
-  background-size: cover;
+  background-image: ${({ $thumbnail }) => ($thumbnail ? `url('${$thumbnail}')` : `url('${defaultThumbnail}')`)};
+  background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
 
