@@ -190,7 +190,7 @@ function FindPassword() {
       ) : (
         ''
       )}
-      {findPasswordCertificateConfirmRequestData ? (
+      {findPasswordCertificateConfirmRequestData && isEmailAndIdCheckSuccess ? (
         <InputBox>
           <SquareInput
             type="password"
