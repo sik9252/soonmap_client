@@ -10,7 +10,7 @@ function InfoDetailPage() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!localStorage.getItem('accessToken') || !localStorage.getItem('refreshToken')) {
+    if (!localStorage.getItem('user-accessToken') || !localStorage.getItem('user-refreshToken')) {
       alert('로그인 후 사용가능합니다.');
       navigate('/my');
     }
@@ -38,6 +38,7 @@ function InfoDetailPage() {
       <ArticleDetail
         title={info.title}
         writer={info.writer}
+        category={info.articleTypeName}
         content={info.content}
         createAt={info.createAt}
         view={info.view}

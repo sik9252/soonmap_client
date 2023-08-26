@@ -25,9 +25,9 @@ function Login() {
   useEffect(() => {
     if (logoutData) {
       alert('로그아웃 되었습니다.');
-      localStorage.removeItem('accessToken');
-      localStorage.removeItem('removeToken');
-      localStorage.removeItem('user');
+      localStorage.removeItem('user-accessToken');
+      localStorage.removeItem('user-removeToken');
+      localStorage.removeItem('user-userId');
       navigate('/');
     } else if (logoutError) {
       alert(logoutError.message);
@@ -35,15 +35,16 @@ function Login() {
   }, [logoutData, logoutError]);
 
   const handleWithDrawlBtn = () => {
-    withDrawlRequest();
+    const isYesClicked = confirm('정말 탈퇴하시겠습니까?');
+    if (isYesClicked) withDrawlRequest();
   };
 
   useEffect(() => {
     if (withDrawlData) {
       alert('탈퇴가 완료되었습니다.');
-      localStorage.removeItem('accessToken');
-      localStorage.removeItem('removeToken');
-      localStorage.removeItem('user');
+      localStorage.removeItem('user-accessToken');
+      localStorage.removeItem('user-removeToken');
+      localStorage.removeItem('user-userId');
       navigate('/');
     } else if (withDrawlError) {
       alert(withDrawlError.message);

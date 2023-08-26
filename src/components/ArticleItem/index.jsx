@@ -2,7 +2,7 @@ import React from 'react';
 import { ReactComponent as TopNotice } from '../../assets/icons/TopNotice.svg';
 import { ArticleItemContainer, ArticleTitleSection, SvgBox, ArticleInfoSection } from './style';
 
-function ArticleItem({ isTop, writer, title, createAt, view, onClick }) {
+function ArticleItem({ isTop, writer, category, title, createAt, view, onClick }) {
   return (
     <ArticleItemContainer onClick={onClick}>
       <ArticleTitleSection $isTop={isTop}>
@@ -11,7 +11,9 @@ function ArticleItem({ isTop, writer, title, createAt, view, onClick }) {
             <TopNotice />
           </SvgBox>
         ) : null}
-        <span>{title}</span>
+        <span>
+          {category ? `[${category}]` : ''} {title}
+        </span>
       </ArticleTitleSection>
       <ArticleInfoSection>
         <div>작성자 · {writer}</div>

@@ -28,6 +28,7 @@ function InfoPage() {
 
   useEffect(() => {
     if (infoResult) {
+      console.log(infoResult);
       setInfoData(infoResult.data.articleList);
       setTotalPosts(infoResult.data.totalPage);
     } else if (infoError) {
@@ -62,6 +63,7 @@ function InfoPage() {
               <ArticleItem
                 key={info.id}
                 writer={info.writer}
+                category={info.articleTypeName}
                 title={info.title}
                 createAt={info.createAt}
                 view={info.view}
