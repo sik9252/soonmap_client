@@ -13,6 +13,7 @@ export default defineConfig({
       manifest: {
         short_name: '순맵',
         name: '순맵',
+        start_url: '/',
         icons: [
           {
             src: '/soonmap.png',
@@ -21,9 +22,9 @@ export default defineConfig({
           },
         ],
       },
-      workbox: {
-        // Workbox 옵션 (예: 캐싱 전략 등)
-      },
+      // workbox: {
+      //   // Workbox 옵션 (예: 캐싱 전략 등)
+      // },
     }),
   ],
 });

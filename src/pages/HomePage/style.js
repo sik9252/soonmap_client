@@ -39,8 +39,9 @@ export const NoticeSection = styled.div`
 
 export const AdSection = styled.div`
   width: 100%;
-  height: 240px;
+  height: auto;
   margin: 20px 0;
+  border-radius: 10px;
 `;
 
 export const InfoSection = styled.div`
