@@ -18,6 +18,7 @@ function RegisterPage() {
   const [isEmailValidate, setIsEmailValidate] = useState(false);
   const [isCertificated, setIsCertificated] = useState(false);
   const [isTimeUp, setTimeUp] = useState(false);
+  const [registerToken, setRegisterToken] = useState('');
 
   const timerComponent = useMemo(() => {
     return <Timer isStart={isEmailValidate} setTimeUp={setTimeUp} />;
@@ -60,7 +61,7 @@ function RegisterPage() {
   useEffect(() => {
     if (codeValidateData) {
       alert('인증에 성공했습니다.');
-      localStorage.setItem('registerToken', codeValidateData.data.registerToken);
+      setRegisterToken(codeValidateData.data.registerToken);
       setIsCertificated(true);
     } else if (codeValidateError) {
       alert(codeValidateError.message);
@@ -120,7 +121,7 @@ function RegisterPage() {
 
   const handleRegisterBtn = () => {
     const data = {
-      registerToken: localStorage.getItem('registerToken'),
+      registerToken: registerToken,
       email: email + '@sch.ac.kr',
       id: id,
       pw: password,

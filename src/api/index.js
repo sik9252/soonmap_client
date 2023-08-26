@@ -18,7 +18,7 @@ export async function httpClient(config, headers) {
 }
 
 useAxios.interceptors.request.use((config) => {
-  const ACCESS_TOKEN = localStorage.getItem('accessToken');
+  const ACCESS_TOKEN = localStorage.getItem('user-accessToken');
 
   // 특정 api 요청에 header 제거하기 위한 코드
   const skipAuthHeader = config.headers.skipAuthHeader;
