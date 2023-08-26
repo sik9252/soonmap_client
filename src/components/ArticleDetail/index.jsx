@@ -9,7 +9,7 @@ import {
 import { ReactComponent as TopNotice } from '../../assets/icons/TopNotice.svg';
 import TextViewer from '../TextViewer';
 
-function ArticleDetail({ writer, isTop, title, content, createAt, view }) {
+function ArticleDetail({ writer, category, isTop, title, content, createAt, view }) {
   return (
     <ArticleDetailContainer>
       <ArticleTitleSection $isTop={isTop}>
@@ -18,7 +18,9 @@ function ArticleDetail({ writer, isTop, title, content, createAt, view }) {
             <TopNotice />
           </SvgBox>
         ) : null}
-        <span>{title}</span>
+        <span>
+          {category ? `[${category}]` : ''} {title}
+        </span>
       </ArticleTitleSection>
       <ArticleInfoSection>
         <div>작성자 · {writer}</div>

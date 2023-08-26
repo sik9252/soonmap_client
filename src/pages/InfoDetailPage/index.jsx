@@ -38,6 +38,7 @@ function InfoDetailPage() {
       <ArticleDetail
         title={info.title}
         writer={info.writer}
+        category={info.articleTypeName}
         content={info.content}
         createAt={info.createAt}
         view={info.view}
