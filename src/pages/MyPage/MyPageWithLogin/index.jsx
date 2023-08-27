@@ -15,7 +15,7 @@ function Login() {
   } = useWithDrawlRequest();
 
   const handleInquiryBtn = () => {
-    alert('준비중인 기능입니다.');
+    window.open('https://open.kakao.com/o/sfjNZfDf', '_blank');
   };
 
   const handleLogoutBtn = () => {

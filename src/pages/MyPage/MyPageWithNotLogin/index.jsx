@@ -2,8 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { LoginBtnContainer, LoginOptionSection, OtherOptionSection } from './style';
 import { SquareInput } from '../../../components/Input';
-import { Button } from '../../../components/Button';
+import { Button as CustomButton } from '../../../components/Button';
 import { useLoginRequest } from '../../../api/Account';
+import { Button } from '@chakra-ui/react';
+import { ChatIcon } from '@chakra-ui/icons';
 
 function NotLogin() {
   const navigate = useNavigate();
@@ -41,19 +43,27 @@ function NotLogin() {
     loginRequest(data);
   };
 
+  const handleInquiryBtn = () => {
+    window.open('https://open.kakao.com/o/sfjNZfDf', '_blank');
+  };
+
   return (
     <LoginBtnContainer>
       <SquareInput type="text" placeholder="아이디" onChange={handleIdInput} />
       <SquareInput type="password" placeholder="비밀번호" onChange={handlePasswordInput} />
       <LoginOptionSection>
-        <Button height={48} onClick={() => handleRegisterBtn()} disabled={loginLoading}>
+        <CustomButton height={48} onClick={() => handleRegisterBtn()} disabled={loginLoading}>
           로그인
-        </Button>
+        </CustomButton>
         <OtherOptionSection>
           <Link to="/register">회원가입 하러가기</Link>
           <Link to="/find-account">아이디/비밀번호 찾기</Link>
         </OtherOptionSection>
       </LoginOptionSection>
+      <Button height="40px" onClick={() => handleInquiryBtn()} mt="20px">
+        <ChatIcon mr="10px" />
+        문의하기
+      </Button>
     </LoginBtnContainer>
   );
 }
