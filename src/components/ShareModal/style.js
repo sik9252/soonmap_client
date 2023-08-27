@@ -42,7 +42,7 @@ export const ModalContent = styled.div`
   font-size: 14px;
   padding: 10px 0;
 
-  & > div {
+  & > div:nth-of-type(1) {
     padding: 10px 0;
     display: flex;
     align-items: center;
