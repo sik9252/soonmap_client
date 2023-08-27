@@ -28,8 +28,12 @@ function MapDetailPage() {
     if (getBuildingDetailResult) {
       const floorList = [];
 
-      for (let i = 0; i < getBuildingDetailResult.data.count; i++) {
-        floorList.push({ value: `${i + 1}층`, label: `${i + 1}층` });
+      for (let i = getBuildingDetailResult.data.floorsDown; i > 0; i--) {
+        floorList.push({ value: `B${i}층`, label: `B${i}층` });
+      }
+
+      for (let i = 1; i < getBuildingDetailResult.data.floorsUp + 1; i++) {
+        floorList.push({ value: `${i}층`, label: `${i}층` });
       }
 
       setFloors(floorList);
@@ -42,13 +46,21 @@ function MapDetailPage() {
   useEffect(() => {
     if (floors && floors[0].value !== '') {
       setSelectedFloor(floors[0].value);
-      setSelectedFloorNum(floors[0].value.replace('층', ''));
+      if (floors[0].value.includes('B')) {
+        setSelectedFloorNum(-(floors[0].value.replace('B', '').replace('층'), ''));
+      } else {
+        setSelectedFloorNum(floors[0].value.replace('층', ''));
+      }
     }
   }, [floors]);
 
   useEffect(() => {
     if (selectedFloor && selectedFloor.value) {
-      setSelectedFloorNum(selectedFloor.value.replace('층', ''));
+      if (selectedFloor.value.includes('B')) {
+        setSelectedFloorNum(-selectedFloor.value.replace('B', '').replace('층', ''));
+      } else {
+        setSelectedFloorNum(selectedFloor.value.replace('층', ''));
+      }
     }
   }, [selectedFloor]);
 
