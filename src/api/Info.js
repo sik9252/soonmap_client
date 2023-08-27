@@ -7,7 +7,7 @@ export function useGetInfoRequest(params, isEnabled) {
     () =>
       httpClient({
         method: 'GET',
-        url: `/article?page=${params.page}&title=${params.title}`,
+        url: `/article?page=${params.page}&title=${params.title}&type=${params.type}`,
       }),
     { enabled: isEnabled },
   );
@@ -18,6 +18,15 @@ export function useGetInfoDetailRequest(params) {
     httpClient({
       method: 'GET',
       url: `/article/${params.id}`,
+    }),
+  );
+}
+
+export function useGetCategoryRequest() {
+  return useQuery([`/article/type`], () =>
+    httpClient({
+      method: 'GET',
+      url: `/article/type`,
     }),
   );
 }
