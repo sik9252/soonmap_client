@@ -11,6 +11,13 @@ import { Select } from '@chakra-ui/react';
 function InfoPage() {
   const navigate = useNavigate();
 
+  useEffect(() => {
+    if (!localStorage.getItem('user-accessToken') || !localStorage.getItem('user-refreshToken')) {
+      alert('로그인 후 사용가능합니다.');
+      navigate('/my');
+    }
+  }, []);
+
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPosts, setTotalPosts] = useState(1);
   const [keyword, setKeyword] = useState('');
