@@ -47,7 +47,7 @@ function MapDetailPage() {
     if (floors && floors[0].value !== '') {
       setSelectedFloor(floors[0].value);
       if (floors[0].value.includes('B')) {
-        setSelectedFloorNum(-(floors[0].value.replace('B', '').replace('층'), ''));
+        setSelectedFloorNum(-floors[0].value.replace('B', '').replace('층', ''));
       } else {
         setSelectedFloorNum(floors[0].value.replace('층', ''));
       }
