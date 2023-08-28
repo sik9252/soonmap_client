@@ -11,7 +11,17 @@ import { useGetMainNoticeRequest, useGetMainInfoRequest } from '../../api/Main';
 function Home() {
   const navigate = useNavigate();
 
-  const [noticeData, setNoticeData] = useState([]);
+  const [noticeData, setNoticeData] = useState([
+    {
+      id: 0,
+      title: '',
+      content: '',
+      writer: '',
+      createAt: '',
+      isTop: false,
+      view: 0,
+    },
+  ]);
   const [adData, setAdData] = useState([
     {
       id: 1,
