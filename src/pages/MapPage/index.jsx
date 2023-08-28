@@ -33,7 +33,7 @@ function Map() {
     if (getBuildingResult) {
       setAllBuildingList(getBuildingResult.data);
     } else if (getBuildingError) {
-      alert('건물 목록을 불러오는데 실패했습니다.');
+      alert('건물이 존재하지 않습니다.');
     }
   }, [getBuildingResult, getBuildingError]);
 
