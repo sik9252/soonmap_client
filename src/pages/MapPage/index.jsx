@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect, useCallback } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { MapContainer, SearchSection, MapSection } from './style';
 import Header from '../../components/Header';
 import BuildingInfoPopup from '../../components/BuildingInfoPopup';
@@ -7,6 +7,7 @@ import DefaultMarker from '../../assets/icons/DefaultMarker.svg';
 import { ReactComponent as MapMyBtn } from '../../assets/icons/MapMyBtn.svg';
 import { useGetBuildingRequest } from '../../api/Building';
 import { Input } from '@chakra-ui/react';
+import { RepeatIcon } from '@chakra-ui/icons';
 
 const { kakao } = window;
 
@@ -19,6 +20,7 @@ function Map() {
   const [buildingInfoPopup, setBuildingInfoPopup] = useState(false);
   const [buildingInfo, setBuildingInfo] = useState({});
   const [keyword, setKeyword] = useState('');
+  const [isRefreshClick, setIsRefreshClick] = useState(false);
 
   // 마커 이미지 및 선택된 마커 객체 관련 변수
   const imageSize = new kakao.maps.Size(35, 30);
@@ -32,12 +34,6 @@ function Map() {
   useEffect(() => {
     getBuildingRequest({ keyword: keyword });
   }, []);
-
-  useEffect(() => {
-    if (keyword === '') {
-      getBuildingRequest({ keyword: '' });
-    }
-  }, [keyword]);
 
   useEffect(() => {
     if (getBuildingResult) {
@@ -166,10 +162,19 @@ function Map() {
     setKeyword(e.target.value);
   };
 
+  useEffect(() => {
+    console.log(kakaoMap);
+  }, [kakaoMap]);
+
   const handleOnEnterKeyDown = (e) => {
     if (e.key === 'Enter') {
       getBuildingRequest({ keyword: keyword });
     }
+  };
+
+  const handleKeywordReset = () => {
+    getBuildingRequest({ keyword: '' });
+    setKeyword('');
   };
 
   const openAlertModal = (e) => {
@@ -183,6 +188,7 @@ function Map() {
         <MapMyBtn onClick={() => openAlertModal()} />
         <Input
           ref={inputRef}
+          value={keyword}
           placeholder="건물 이름을 입력해주세요."
           onChange={handleKeyword}
           onKeyDown={handleOnEnterKeyDown}
@@ -191,6 +197,7 @@ function Map() {
           borderRadius="64px"
           backgroundColor="#fff"
         />
+        <RepeatIcon ml="10px" onClick={() => handleKeywordReset()} cursor="pointer" />
       </SearchSection>
       <MapSection>
         <div id="map" />

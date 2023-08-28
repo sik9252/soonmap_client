@@ -12,10 +12,10 @@ export const SearchSection = styled.div`
   position: relative;
   z-index: 10;
 
-  & > svg {
+  /* & > svg {
     cursor: pointer;
     padding-top: 3px;
-  }
+  } */
 `;
 
 export const MapSection = styled.div`
