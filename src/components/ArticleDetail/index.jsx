@@ -8,8 +8,9 @@ import {
 } from './style';
 import { ReactComponent as TopNotice } from '../../assets/icons/TopNotice.svg';
 import TextViewer from '../TextViewer';
+import { Flex, Image } from '@chakra-ui/react';
 
-function ArticleDetail({ writer, category, isTop, title, content, createAt, view }) {
+function ArticleDetail({ writer, thumbnail, category, isTop, title, content, createAt, view }) {
   return (
     <ArticleDetailContainer>
       <ArticleTitleSection $isTop={isTop}>
@@ -18,9 +19,10 @@ function ArticleDetail({ writer, category, isTop, title, content, createAt, view
             <TopNotice />
           </SvgBox>
         ) : null}
-        <span>
+        <Flex>
+          <Image src={thumbnail} mr="10px" />
           {category ? `[${category}]` : ''} {title}
-        </span>
+        </Flex>
       </ArticleTitleSection>
       <ArticleInfoSection>
         <div>작성자 · {writer}</div>
