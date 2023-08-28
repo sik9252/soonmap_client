@@ -162,10 +162,6 @@ function Map() {
     setKeyword(e.target.value);
   };
 
-  useEffect(() => {
-    console.log(kakaoMap);
-  }, [kakaoMap]);
-
   const handleOnEnterKeyDown = (e) => {
     if (e.key === 'Enter') {
       getBuildingRequest({ keyword: keyword });

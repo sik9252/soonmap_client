@@ -41,8 +41,6 @@ useAxios.interceptors.response.use(
 
   async (error) => {
     const originalRequest = error.config;
-    console.log('error:', error);
-    console.log('originalRequest:', originalRequest);
 
     if (error.response.status === 417 && !originalRequest._retry) {
       originalRequest._retry = true;
