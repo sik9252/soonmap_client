@@ -19,8 +19,8 @@ function ArticleDetail({ writer, thumbnail, category, isTop, title, content, cre
             <TopNotice />
           </SvgBox>
         ) : null}
-        <Flex>
-          <Image src={thumbnail} mr="10px" />
+        <Flex alignItems="center">
+          <Image src={thumbnail} mr="10px" width="35px" />
           {category ? `[${category}]` : ''} {title}
         </Flex>
       </ArticleTitleSection>

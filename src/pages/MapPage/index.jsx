@@ -1,17 +1,18 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useRef, useState, useEffect, useCallback } from 'react';
 import { MapContainer, SearchSection, MapSection } from './style';
 import Header from '../../components/Header';
-import SearchBar from '../../components/SearchBar';
 import BuildingInfoPopup from '../../components/BuildingInfoPopup';
 import SelectedMarker from '../../assets/icons/SelectedMarker.svg';
 import DefaultMarker from '../../assets/icons/DefaultMarker.svg';
 import { ReactComponent as MapMyBtn } from '../../assets/icons/MapMyBtn.svg';
 import { useGetBuildingRequest } from '../../api/Building';
+import { Input } from '@chakra-ui/react';
 
 const { kakao } = window;
 
 function Map() {
   const [kakaoMap, setKakaoMap] = useState(null);
+  const inputRef = useRef();
 
   // 건물 리스트 및 선택된 건물 정보 관련 상태
   const [allBuildingList, setAllBuildingList] = useState([]);
@@ -19,15 +20,24 @@ function Map() {
   const [buildingInfo, setBuildingInfo] = useState({});
   const [keyword, setKeyword] = useState('');
 
-  const {
-    data: getBuildingResult,
-    isError: getBuildingError,
-    refetch,
-  } = useGetBuildingRequest({ keyword: keyword }, false);
+  // 마커 이미지 및 선택된 마커 객체 관련 변수
+  const imageSize = new kakao.maps.Size(35, 30);
+  const imageOffset = new kakao.maps.Point(15, 30);
+  const defaultMarkerImage = new kakao.maps.MarkerImage(DefaultMarker, imageSize, { offset: imageOffset });
+  const selectedMarkerImage = new kakao.maps.MarkerImage(SelectedMarker, imageSize, { offset: imageOffset });
+  let lastClickedMarker = null;
+
+  const { mutate: getBuildingRequest, data: getBuildingResult, error: getBuildingError } = useGetBuildingRequest();
 
   useEffect(() => {
-    refetch();
+    getBuildingRequest({ keyword: keyword });
   }, []);
+
+  useEffect(() => {
+    if (keyword === '') {
+      getBuildingRequest({ keyword: '' });
+    }
+  }, [keyword]);
 
   useEffect(() => {
     if (getBuildingResult) {
@@ -36,13 +46,6 @@ function Map() {
       alert('건물이 존재하지 않습니다.');
     }
   }, [getBuildingResult, getBuildingError]);
-
-  // 마커 이미지 및 선택된 마커 객체 관련 변수
-  const imageSize = new kakao.maps.Size(35, 30);
-  const imageOffset = new kakao.maps.Point(15, 30);
-  const defaultMarkerImage = new kakao.maps.MarkerImage(DefaultMarker, imageSize, { offset: imageOffset });
-  const selectedMarkerImage = new kakao.maps.MarkerImage(SelectedMarker, imageSize, { offset: imageOffset });
-  let lastClickedMarker = null;
 
   /** 1. 지도 객체 생성 및 지도 관련 환경 설정 */
   const onMapClick = () => {
@@ -142,9 +145,30 @@ function Map() {
     }
   }, [kakaoMap, allBuildingList]);
 
+  // 외부 클릭 감지 함수
+  const handleClickOutside = (event) => {
+    if (inputRef.current && !inputRef.current.contains(event.target)) {
+      inputRef.current.blur();
+    }
+  };
+
+  useEffect(() => {
+    // 컴포넌트가 마운트될 때 이벤트 리스너 등록
+    document.addEventListener('mousedown', handleClickOutside);
+
+    return () => {
+      // 컴포넌트가 언마운트될 때 이벤트 리스너 제거
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
+  const handleKeyword = (e) => {
+    setKeyword(e.target.value);
+  };
+
   const handleOnEnterKeyDown = (e) => {
     if (e.key === 'Enter') {
-      refetch();
+      getBuildingRequest({ keyword: keyword });
     }
   };
 
@@ -157,10 +181,15 @@ function Map() {
       <Header pageTitle={'지도 검색'} />
       <SearchSection>
         <MapMyBtn onClick={() => openAlertModal()} />
-        <SearchBar
-          placeholder={'건물/강의실 이름을 입력해주세요.'}
-          onChange={(e) => setKeyword(e.target.value)}
+        <Input
+          ref={inputRef}
+          placeholder="건물 이름을 입력해주세요."
+          onChange={handleKeyword}
           onKeyDown={handleOnEnterKeyDown}
+          boxShadow="1px 1px 4px 0px rgba(0, 0, 0, 0.25)"
+          border="none"
+          borderRadius="64px"
+          backgroundColor="#fff"
         />
       </SearchSection>
       <MapSection>
