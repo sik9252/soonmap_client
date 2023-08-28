@@ -1,16 +1,25 @@
 import { httpClient } from '.';
-import { useQuery } from '@tanstack/react-query';
+import { useQuery, useMutation } from '@tanstack/react-query';
 
 // 건물 리스트 요청 + 검색
-export function useGetBuildingRequest(params, isEnabled) {
-  return useQuery(
-    [`/building?keyword=${params.keyword}`, params],
-    () =>
-      httpClient({
-        method: 'GET',
-        url: `/building?keyword=${params.keyword}`,
-      }),
-    { enabled: isEnabled },
+// export function useGetBuildingRequest(params, isEnabled) {
+//   return useQuery(
+//     [`/building?keyword=${params.keyword}`, params],
+//     () =>
+//       httpClient({
+//         method: 'GET',
+//         url: `/building?keyword=${params.keyword}`,
+//       }),
+//     { enabled: isEnabled },
+//   );
+// }
+
+export function useGetBuildingRequest() {
+  return useMutation((data) =>
+    httpClient({
+      method: 'GET',
+      url: `/building?keyword=${data.keyword}`,
+    }),
   );
 }
 
