@@ -41,12 +41,10 @@ useAxios.interceptors.response.use(
 
   async (error) => {
     const originalRequest = error.config;
+    console.log('error:', error);
+    console.log('originalRequest:', originalRequest);
 
-    if (
-      error.response.status === 401 &&
-      error.response.data.message === '잘못된 접근입니다.' &&
-      !originalRequest._retry
-    ) {
+    if (error.response.status === 417 && !originalRequest._retry) {
       originalRequest._retry = true;
 
       const refreshToken = localStorage.getItem('user-refreshToken');
