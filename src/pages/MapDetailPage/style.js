@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import COLOR from '../../styles/common/color';
 
 export const MapDetailContainer = styled.div``;
@@ -12,10 +12,10 @@ export const SelectSection = styled.div`
 export const FloorImageSection = styled.div`
   display: flex;
   justify-content: center;
+  padding: 10px;
 
   & > img {
-    border-top: 1px solid ${COLOR.GRAY_0};
-    border-bottom: 1px solid ${COLOR.GRAY_0};
-    width: 90%;
+    width: 100%;
+    height: 100%;
   }
 `;
