@@ -26,6 +26,7 @@ export const ArticleTitleSection = styled.div`
 
 export const SvgBox = styled.div`
   width: 34px;
+  margin-right: 10px;
 `;
 
 export const ArticleInfoSection = styled.div`
