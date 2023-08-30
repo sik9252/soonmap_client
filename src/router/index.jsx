@@ -16,7 +16,7 @@ import { ScrollToTop } from '../hooks/scrollToTop';
 
 function Router() {
   return (
-    <BrowserRouter>
+    <>
       <ScrollToTop />
       <Routes>
         <Route path="*" element={<NotFoundPage />} />
@@ -32,7 +32,7 @@ function Router() {
         <Route path="/info/:id" element={<InfoDetailPage />} />
       </Routes>
       <MenuBar />
-    </BrowserRouter>
+    </>
   );
 }
 

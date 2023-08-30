@@ -17,9 +17,11 @@ jobs:
         run: |
           echo "VITE_KAKAO_API_KEY=$VITE_KAKAO_API_KEY" >> .env.production
           echo "VITE_SERVER_IP=$VITE_SERVER_IP" >> .env.production
+          echo "VITE_GOOGLE_ANALYTICS=$VITE_GOOGLE_ANALYTICS" >> .env.production
         env:
           VITE_KAKAO_API_KEY: ${{ secrets.VITE_KAKAO_API_KEY }}
           VITE_SERVER_IP: ${{ secrets.VITE_SERVER_IP }}
+          VITE_GOOGLE_ANALYTICS: ${{ secrets.VITE_GOOGLE_ANALYTICS }}
       - run: yarn install
       - run: yarn build
       - name: deploy to s3

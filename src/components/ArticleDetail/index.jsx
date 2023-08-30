@@ -19,10 +19,16 @@ function ArticleDetail({ writer, thumbnail, category, isTop, title, content, cre
             <TopNotice />
           </SvgBox>
         ) : null}
-        <Flex alignItems="center">
-          <Image src={thumbnail} mr="10px" width="35px" />
-          {category ? `[${category}]` : ''} {title}
-        </Flex>
+        {thumbnail ? (
+          <Flex alignItems="center">
+            <Image src={thumbnail} mr="10px" width="35px" />
+            {category ? `[${category}]` : ''} {title}
+          </Flex>
+        ) : (
+          <Flex>
+            {category ? `[${category}]` : ''} {title}
+          </Flex>
+        )}
       </ArticleTitleSection>
       <ArticleInfoSection>
         <div>작성자 · {writer}</div>
