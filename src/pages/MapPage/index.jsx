@@ -20,7 +20,6 @@ function Map() {
   const [buildingInfoPopup, setBuildingInfoPopup] = useState(false);
   const [buildingInfo, setBuildingInfo] = useState({});
   const [keyword, setKeyword] = useState('');
-  const [isRefreshClick, setIsRefreshClick] = useState(false);
 
   // 마커 이미지 및 선택된 마커 객체 관련 변수
   const imageSize = new kakao.maps.Size(35, 30);
@@ -82,7 +81,7 @@ function Map() {
   };
 
   const createMarker = (id, latlng, info) => {
-    var marker = new kakao.maps.Marker({
+    let marker = new kakao.maps.Marker({
       id: id,
       map: kakaoMap,
       position: latlng,
@@ -91,7 +90,7 @@ function Map() {
 
     if (info?.uniqueNumber.length > 1) {
       const overlayContent =
-        '<div style="font-size: 10px; font-weight: 700; position: absolute; bottom: 11px; left: -4px; color: #FFFFFF;">' +
+        '<div style="font-size: 10px; font-weight: 700; position: absolute; bottom: 15px; left: -4px; color: #FFFFFF;">' +
         info?.uniqueNumber +
         '</div>';
 
@@ -104,7 +103,7 @@ function Map() {
       overlay.setMap(kakaoMap);
     } else {
       const overlayContent =
-        '<div style="font-size: 10px; font-weight: 700; position: absolute; bottom: 11px; left: -0.5px; color: #FFFFFF;">' +
+        '<div style="font-size: 10px; font-weight: 700; position: absolute; bottom: 15px; left: -1px; color: #FFFFFF;">' +
         info?.uniqueNumber +
         '</div>';
 
