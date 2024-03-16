@@ -5,10 +5,11 @@ const GlobalStyle = createGlobalStyle`
     ${reset}
 
     html {
-        ${({ theme }) => theme.container.mainContainer}
+        ${({ theme }) => theme.container.mainContainer};
+        font-family: Pretendard Variable;
     }
     body {
-        font-family: Pretendard Variable,
+        font-family: Pretendard Variable;
     }
     *{
         box-sizing: border-box;

@@ -5,7 +5,7 @@ module.exports = {
     es6: true,
   },
   parserOptions: {
-    ecmaVersion: 2018,
+    ecmaVersion: 2020,
     sourceType: 'module',
     ecmaFeatures: {
       jsx: true,
@@ -14,7 +14,6 @@ module.exports = {
   extends: ['eslint:recommended', 'plugin:react/recommended', 'plugin:jsx-a11y/recommended'],
   plugins: [],
   rules: {
-    'no-console': ['warn', { allow: ['warn', 'error', 'info'] }],
     'import/prefer-default-export': 'off',
     'react/prop-types': 'off',
     'no-unused-vars': 'off',

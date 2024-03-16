@@ -2,12 +2,44 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#25549c" />
+    <link rel="icon" type="image/svg+xml" href="/soonmap.png" />
+    <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1.0, user-scalable=no" />
+    <meta property="og:title" content="순맵" />
+    <meta property="og:url" content="https://www.soon-map.com" />
+    <meta property="og:description" content="순맵에서 캠퍼스 및 강의실 위치와 각종 행사 정보를 빠르게 알아보세요!" />
+    <meta property="og:image" content="/soonmap_vertical.png" />
+    <!-- <meta property="og:image:width" content="400" />
+    <meta property="og:image:height" content="200" /> -->
+    <link
+      rel="stylesheet"
+      as="style"
+      crossorigin
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.4/dist/web/variable/pretendardvariable.css"
+    />
+    <link rel="manifest" href="manifest.json" />
     <title>순맵</title>
   </head>
+
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=%VITE_KAKAO_API_KEY%"></script>
+    <script>
+      if ('serviceWorker' in navigator) {
+        // Register a service worker hosted at the root of the
+        // site using the default scope.
+        navigator.serviceWorker
+          .register('/sw.js')
+          .then((registration) => {
+            console.log('Service worker registration succeeded:', registration);
+          })
+          .catch((err) => {
+            console.log('Service worker registration failed:', error);
+          });
+      } else {
+        console.log('Service workers are not supported.');
+      }
+    </script>
   </body>
 </html>

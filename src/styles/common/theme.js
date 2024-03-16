@@ -5,6 +5,7 @@ const mainTheme = {
     mainContainer: css`
       // ~ 320px 인 device에 대한 속성 값을 작성
       margin: 0 auto;
+      padding-bottom: 54px;
 
       @media only screen and (min-width: 320px) {
         // 320px ~ 인 device에 대한 속성 값을 작성
